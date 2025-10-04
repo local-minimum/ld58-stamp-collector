@@ -2,6 +2,7 @@ extends Area3D
 class_name Goal
 
 @export var required_stamps_collected: int
+@export var confetti: Array[GPUParticles3D]
 
 var _collected_stamps: Array[CollectableStamp]
 
@@ -25,5 +26,7 @@ func _on_body_entered(body:Node3D) -> void:
 
     if _collected_stamps.size() >= required_stamps_collected:
         __SignalBus.on_level_completed.emit()
+        for conf: GPUParticles3D in confetti:
+            conf.restart()
     else:
         __SignalBus.on_forgot_stamps.emit(required_stamps_collected - _collected_stamps.size())

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cfj7cb6xeqdl5"]
+[gd_scene load_steps=11 format=3 uid="uid://cfj7cb6xeqdl5"]
 
 [ext_resource type="PackedScene" uid="uid://b6g6huxn4l51q" path="res://models/decorations/goal.fbx" id="1_ajgly"]
 [ext_resource type="Script" uid="uid://1mugw8n3pyl1" path="res://scripts/goal.gd" id="2_q2avg"]
@@ -13,8 +13,34 @@ radius = 0.0537109
 [sub_resource type="BoxShape3D" id="BoxShape3D_hndij"]
 size = Vector3(1.42133, 0.202148, 0.0682983)
 
-[node name="Goal" instance=ExtResource("1_ajgly")]
+[sub_resource type="Gradient" id="Gradient_q2avg"]
+offsets = PackedFloat32Array(0, 0.253687, 0.705015, 1)
+colors = PackedColorArray(0.835718, 1.73271e-06, 4.81307e-07, 1, 0.740173, 0.943581, 0.368805, 1, 0.830013, 0.51539, 0.938171, 1, 0.156863, 0.25098, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_hndij"]
+gradient = SubResource("Gradient_q2avg")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2bwmb"]
+angle_min = 90.0
+angle_max = 90.0
+direction = Vector3(0, 1, 0)
+spread = 10.0
+initial_velocity_min = 4.0
+initial_velocity_max = 8.0
+gravity = Vector3(0, -4, 0)
+color_initial_ramp = SubResource("GradientTexture1D_hndij")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6xcm8"]
+vertex_color_use_as_albedo = true
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_dv651"]
+material = SubResource("StandardMaterial3D_6xcm8")
+size = Vector2(0.2, 0.3)
+
+[node name="Goal" node_paths=PackedStringArray("confetti") instance=ExtResource("1_ajgly")]
 script = ExtResource("2_q2avg")
+confetti = [NodePath("Confetti"), NodePath("Confetti2")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00685847, 0.516663, 0.178236)
@@ -33,5 +59,25 @@ shape = SubResource("CylinderShape3D_ajgly")
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0144958, 1.12939, -0.00302124)
 shape = SubResource("BoxShape3D_hndij")
+
+[node name="Confetti" type="GPUParticles3D" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.749174, 0, 0)
+emitting = false
+amount = 60
+lifetime = 3.0
+one_shot = true
+explosiveness = 0.3
+process_material = SubResource("ParticleProcessMaterial_2bwmb")
+draw_pass_1 = SubResource("QuadMesh_dv651")
+
+[node name="Confetti2" type="GPUParticles3D" parent="." index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.738442, 0, 0)
+emitting = false
+amount = 60
+lifetime = 3.0
+one_shot = true
+explosiveness = 0.3
+process_material = SubResource("ParticleProcessMaterial_2bwmb")
+draw_pass_1 = SubResource("QuadMesh_dv651")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
