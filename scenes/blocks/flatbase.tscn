@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://blja4x0ic71px"]
+[gd_scene load_steps=4 format=3 uid="uid://blja4x0ic71px"]
 
 [ext_resource type="PackedScene" uid="uid://o8tgwjal8ddb" path="res://models/blocks/flatbase.fbx" id="1_w5iu2"]
+[ext_resource type="PhysicsMaterial" uid="uid://cnj6pjoh8s4f5" path="res://scenes/blocks/default_surface_mat.tres" id="2_pyajc"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_pyajc"]
 data = PackedVector3Array(-0.01, 0.01, 0.01, -0.01, -0.01, 0.01, -0.01, -0.01, 0, -0.01, -0.01, 0, -0.01, 0.01, 0, -0.01, 0.01, 0.01, 0.01, 0.01, 0.01, -0.01, 0.01, 0.01, -0.01, 0.01, 0, -0.01, 0.01, 0, 0.01, 0.01, 0, 0.01, 0.01, 0.01, 0.01, -0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0, 0.01, 0.01, 0, 0.01, -0.01, 0, 0.01, -0.01, 0.01, -0.01, -0.01, 0.01, 0.01, -0.01, 0.01, 0.01, -0.01, 0, 0.01, -0.01, 0, -0.01, -0.01, 0, -0.01, -0.01, 0.01, 0.01, -0.01, 0, 0.01, 0.01, 0, -0.01, 0.01, 0, -0.01, 0.01, 0, -0.01, -0.01, 0, 0.01, -0.01, 0, -0.01, -0.01, 0.01, -0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, -0.01, 0.01, -0.01, -0.01, 0.01)
 
 [node name="flatbase" instance=ExtResource("1_w5iu2")]
+physics_material_override = ExtResource("2_pyajc")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
 transform = Transform3D(100, 0, 0, 0, -1.19209e-05, 100, 0, -100, -1.19209e-05, 0, 0, 0)
