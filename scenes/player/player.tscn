@@ -1,12 +1,73 @@
-[gd_scene load_steps=3 format=3 uid="uid://c7qdipaiiomto"]
+[gd_scene load_steps=14 format=3 uid="uid://c7qdipaiiomto"]
 
 [ext_resource type="PackedScene" uid="uid://4ipkigkxqqrp" path="res://models/character/sphere.fbx" id="1_8afob"]
+[ext_resource type="PackedScene" uid="uid://dhkh1cegh1ymt" path="res://models/character/sphere_on_stamp.fbx" id="2_dovo2"]
+[ext_resource type="Script" uid="uid://4mokcmud8kmg" path="res://scripts/ball_controller.gd" id="2_gmlin"]
+[ext_resource type="PackedScene" uid="uid://qecxl2b8ko5b" path="res://models/character/sphere_two_stamp.fbx" id="4_0owmy"]
+[ext_resource type="PackedScene" uid="uid://boo2yv6t754m1" path="res://models/character/sphere_three_stamp.fbx" id="5_qek5x"]
+[ext_resource type="PackedScene" uid="uid://d15miglsjw7cx" path="res://models/character/sphere_four_stamp.fbx" id="6_5gtgg"]
+[ext_resource type="PackedScene" uid="uid://biye4uuxt52tm" path="res://models/character/sphere_five_stamp.fbx" id="7_h17s1"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_dovo2"]
 
-[node name="Player" instance=ExtResource("1_8afob")]
+[sub_resource type="BoxShape3D" id="BoxShape3D_gmlin"]
+size = Vector3(0.286377, 0.270264, 0.275452)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_je7p5"]
+size = Vector3(0.191553, 0.328906, 0.311182)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0owmy"]
+size = Vector3(0.387604, 0.282349, 0.529175)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qek5x"]
+size = Vector3(0.338379, 0.175049, 0.349121)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5gtgg"]
+size = Vector3(0.268326, 0.158813, 0.26123)
+
+[node name="Player" node_paths=PackedStringArray("stamp_versions", "stamp_colliders") instance=ExtResource("1_8afob")]
 angular_damp_mode = 1
 angular_damp = 0.8
+script = ExtResource("2_gmlin")
+stamp_versions = [NodePath("Sphere"), NodePath("sphere_on_stamp"), NodePath("sphere_two_stamp"), NodePath("sphere_three_stamp"), NodePath("sphere_four_stamp"), NodePath("sphere_five_stamp")]
+stamp_colliders = [NodePath("SphareCollision"), NodePath("Stamp 1 Collision"), NodePath("Stamp 2 Collision"), NodePath("Stamp 3 Collision"), NodePath("Stamp 4 Collision"), NodePath("Stamp 5 Collision")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
+[node name="Sphere" parent="." index="0"]
+visible = false
+
+[node name="SphareCollision" type="CollisionShape3D" parent="." index="1"]
 shape = SubResource("SphereShape3D_dovo2")
+
+[node name="Stamp 1 Collision" type="CollisionShape3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0153558, 0.00925595, -0.366734)
+shape = SubResource("BoxShape3D_gmlin")
+
+[node name="sphere_on_stamp" parent="." index="3" instance=ExtResource("2_dovo2")]
+visible = false
+
+[node name="Stamp 2 Collision" type="CollisionShape3D" parent="." index="4"]
+transform = Transform3D(0.741585, -0.320262, -0.589477, 0.484518, 0.863434, 0.140441, 0.463997, -0.389762, 0.795483, 0.331023, 0.181051, 0.136112)
+shape = SubResource("BoxShape3D_je7p5")
+
+[node name="sphere_two_stamp" parent="." index="5" instance=ExtResource("4_0owmy")]
+visible = false
+
+[node name="Stamp 3 Collision" type="CollisionShape3D" parent="." index="6"]
+transform = Transform3D(0.860292, -0.133368, -0.492048, -0.130978, 0.874955, -0.466154, 0.49269, 0.465475, 0.735248, -0.123329, -0.103865, 0.178071)
+shape = SubResource("BoxShape3D_0owmy")
+
+[node name="sphere_three_stamp" parent="." index="7" instance=ExtResource("5_qek5x")]
+visible = false
+
+[node name="Stamp 4 Collision" type="CollisionShape3D" parent="." index="8"]
+transform = Transform3D(0.782271, -0.622938, 0, 0.615879, 0.773406, -0.150122, 0.0935167, 0.117436, 0.988667, -0.228258, 0.335478, 0.0829621)
+shape = SubResource("BoxShape3D_qek5x")
+
+[node name="sphere_four_stamp" parent="." index="9" instance=ExtResource("6_5gtgg")]
+visible = false
+
+[node name="Stamp 5 Collision" type="CollisionShape3D" parent="." index="10"]
+transform = Transform3D(0.799853, -0.599556, 0.0277157, 0.598312, 0.792834, -0.115916, 0.0475244, 0.109299, 0.992872, 0.233502, -0.348849, -0.0475144)
+shape = SubResource("BoxShape3D_5gtgg")
+
+[node name="sphere_five_stamp" parent="." index="11" instance=ExtResource("7_h17s1")]

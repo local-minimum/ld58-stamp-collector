@@ -1,7 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://r014hgsbjcst"]
+[gd_scene load_steps=9 format=3 uid="uid://r014hgsbjcst"]
 
 [ext_resource type="PackedScene" uid="uid://blja4x0ic71px" path="res://scenes/blocks/flatbase.tscn" id="1_8ho6b"]
-[ext_resource type="Script" uid="uid://4mokcmud8kmg" path="res://scripts/ball_controller.gd" id="2_4kmhl"]
 [ext_resource type="PackedScene" uid="uid://3i1kb6v3egr2" path="res://scenes/blocks/pyramid.tscn" id="2_ph3nu"]
 [ext_resource type="PackedScene" uid="uid://c7qdipaiiomto" path="res://scenes/player/player.tscn" id="3_ph3nu"]
 [ext_resource type="PackedScene" uid="uid://b3rcjl01xw5ly" path="res://scenes/decorations/stamp.tscn" id="5_ckvwl"]
@@ -16,7 +15,6 @@ size = Vector3(9, 1, 9)
 
 [node name="Player" parent="." instance=ExtResource("3_ph3nu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000673145, 2.09366, -2.0266)
-script = ExtResource("2_4kmhl")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-0.306487, -0.593162, 0.744462, -0.117433, 0.799689, 0.588819, -0.944603, 0.0930412, -0.314751, 7.81498, 4.92812, -2.16863)
@@ -79,6 +77,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 8)
 [node name="Stamp" parent="LevelGeometry" instance=ExtResource("5_ckvwl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2, 2)
 
+[node name="Goal" parent="LevelGeometry" instance=ExtResource("7_gbqnl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 1, 8)
+required_stamps_collected = 3
+
+[node name="Stamp2" parent="LevelGeometry" instance=ExtResource("5_ckvwl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.53292, -2)
+
+[node name="Stamp3" parent="LevelGeometry" instance=ExtResource("5_ckvwl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 1.53292, 4)
+
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1, 0)
 script = ExtResource("5_cq4me")
@@ -129,9 +137,5 @@ transform = Transform3D(1, 0, 2.98023e-08, 2.98023e-08, 1, 1.49012e-08, 2.98023e
 
 [node name="Checkpoint 3" type="Node3D" parent="Camera Track"]
 transform = Transform3D(1, 0, 2.98023e-08, 2.98023e-08, 1, 1.49012e-08, 2.98023e-08, 0, 1, 17.815, 4.92812, 6.83137)
-
-[node name="Goal" parent="." instance=ExtResource("7_gbqnl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 1, 8)
-required_stamps_collected = 1
 
 [connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]
