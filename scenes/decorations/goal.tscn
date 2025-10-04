@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cfj7cb6xeqdl5"]
+[gd_scene load_steps=6 format=3 uid="uid://cfj7cb6xeqdl5"]
 
 [ext_resource type="PackedScene" uid="uid://b6g6huxn4l51q" path="res://models/decorations/goal.fbx" id="1_ajgly"]
+[ext_resource type="Script" uid="uid://1mugw8n3pyl1" path="res://scripts/goal.gd" id="2_q2avg"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q2avg"]
 size = Vector3(1.37624, 1.01282, 0.154785)
@@ -13,6 +14,7 @@ radius = 0.0537109
 size = Vector3(1.42133, 0.202148, 0.0682983)
 
 [node name="Goal" instance=ExtResource("1_ajgly")]
+script = ExtResource("2_q2avg")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00685847, 0.516663, -0.00463867)
@@ -31,3 +33,5 @@ shape = SubResource("CylinderShape3D_ajgly")
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0144958, 1.12939, -0.00302124)
 shape = SubResource("BoxShape3D_hndij")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

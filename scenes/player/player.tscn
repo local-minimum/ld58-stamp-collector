@@ -5,6 +5,8 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_dovo2"]
 
 [node name="Player" instance=ExtResource("1_8afob")]
+angular_damp_mode = 1
+angular_damp = 0.8
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
 shape = SubResource("SphereShape3D_dovo2")

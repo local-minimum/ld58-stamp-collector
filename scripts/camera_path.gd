@@ -8,6 +8,7 @@ extends Node3D
 @export var reset_duration: float = 0.5
 
 var _cam_start_rotation: Quaternion
+var _level_completed: bool
 
 func _ready() -> void:
     _cam_start_rotation = cam.global_basis.get_rotation_quaternion()
@@ -17,11 +18,20 @@ func _ready() -> void:
     if __SignalBus.on_start_run.connect(_start_run) != OK:
         push_error("Failed to connect run start")
 
+    if __SignalBus.on_level_completed.connect(_handle_level_completed) != OK:
+        push_error("Failed to connect level completed")
+
     reset_cam_to_start.call_deferred()
 
 var _reset_tween: Tween
 
+func _handle_level_completed() -> void:
+    _level_completed = true
+
 func reset_cam_to_start() -> void:
+    if _level_completed:
+        return
+
     if _reset_tween != null && _reset_tween.is_running():
         _reset_tween.kill()
 
@@ -50,7 +60,7 @@ var _checkpoint_idx: int
 var _last_checkpoint: float
 
 func _process(_delta: float) -> void:
-    if !_started:
+    if !_started || _level_completed:
         return
 
     var now: float = Time.get_ticks_msec() / 1000.0
@@ -66,7 +76,8 @@ func _process(_delta: float) -> void:
     if progress == 1.0:
         cam.global_position = to
         if _last_checkpoint + 1 < checkpoints.size():
-            _last_checkpoint += 1
+            _checkpoint_idx += 1
             _last_checkpoint = now
+            print_debug("[Cam] Reached checkpoint %s" % _checkpoint_idx)
     else:
         cam.global_position = from.lerp(to, progress)
