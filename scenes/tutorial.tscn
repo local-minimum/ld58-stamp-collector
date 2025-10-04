@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://r014hgsbjcst"]
+[gd_scene load_steps=9 format=3 uid="uid://r014hgsbjcst"]
 
 [ext_resource type="PackedScene" uid="uid://blja4x0ic71px" path="res://scenes/blocks/flatbase.tscn" id="1_8ho6b"]
 [ext_resource type="Script" uid="uid://4mokcmud8kmg" path="res://scripts/ball_controller.gd" id="2_4kmhl"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c7qdipaiiomto" path="res://scenes/player/player.tscn" id="3_ph3nu"]
 [ext_resource type="Script" uid="uid://ddqoxa0mtlejm" path="res://scripts/kill_zone.gd" id="5_cq4me"]
 [ext_resource type="Script" uid="uid://c16ixpg4aqpej" path="res://scripts/camera_path.gd" id="6_6yjpi"]
+[ext_resource type="PackedScene" uid="uid://cfj7cb6xeqdl5" path="res://scenes/decorations/goal.tscn" id="7_gbqnl"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4kmhl"]
 size = Vector3(9, 1, 9)
@@ -62,6 +63,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 4)
 [node name="flatbase11" parent="LevelGeometry" instance=ExtResource("1_8ho6b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 4)
 
+[node name="flatbase12" parent="LevelGeometry" instance=ExtResource("1_8ho6b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 4)
+
+[node name="flatbase13" parent="LevelGeometry" instance=ExtResource("1_8ho6b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 6)
+
+[node name="flatbase14" parent="LevelGeometry" instance=ExtResource("1_8ho6b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 8)
+
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1, 0)
 script = ExtResource("5_cq4me")
@@ -101,13 +111,19 @@ shape = SubResource("BoxShape3D_4kmhl")
 script = ExtResource("6_6yjpi")
 player = NodePath("../Player")
 cam = NodePath("../Camera3D")
-checkpoints = [NodePath("Checkpoint 1"), NodePath("Checkpoint 2")]
-transition_times = Array[float]([5.0])
+checkpoints = [NodePath("Checkpoint 1"), NodePath("Checkpoint 2"), NodePath("Checkpoint 3")]
+transition_times = Array[float]([5.0, 5.0])
 
 [node name="Checkpoint 1" type="Node3D" parent="Camera Track"]
 transform = Transform3D(1, 0, 2.98023e-08, 2.98023e-08, 1, 1.49012e-08, 2.98023e-08, 0, 1, 7.81498, 4.92812, -2.16863)
 
 [node name="Checkpoint 2" type="Node3D" parent="Camera Track"]
 transform = Transform3D(1, 0, 2.98023e-08, 2.98023e-08, 1, 1.49012e-08, 2.98023e-08, 0, 1, 15.815, 4.92812, 0.831367)
+
+[node name="Checkpoint 3" type="Node3D" parent="Camera Track"]
+transform = Transform3D(1, 0, 2.98023e-08, 2.98023e-08, 1, 1.49012e-08, 2.98023e-08, 0, 1, 17.815, 4.92812, 6.83137)
+
+[node name="Goal" parent="." instance=ExtResource("7_gbqnl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 1, 8)
 
 [connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]
