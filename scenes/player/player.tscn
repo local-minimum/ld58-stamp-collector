@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7qdipaiiomto"]
+
+[ext_resource type="PackedScene" uid="uid://4ipkigkxqqrp" path="res://models/character/sphere.fbx" id="1_8afob"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_dovo2"]
+
+[node name="Player" instance=ExtResource("1_8afob")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
+shape = SubResource("SphereShape3D_dovo2")

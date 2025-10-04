@@ -3,18 +3,18 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://o8tgwjal8ddb"
-path="res://.godot/imported/flatbase.fbx-d74003c93023225b27432bf59e6f28da.scn"
+uid="uid://c3h371lrverec"
+path="res://.godot/imported/pyramid.fbx-3de9aa256f0d2ba5b996f227cca020e0.scn"
 
 [deps]
 
-source_file="res://models/blocks/flatbase.fbx"
-dest_files=["res://.godot/imported/flatbase.fbx-d74003c93023225b27432bf59e6f28da.scn"]
+source_file="res://models/blocks/pyramid.fbx"
+dest_files=["res://.godot/imported/pyramid.fbx-3de9aa256f0d2ba5b996f227cca020e0.scn"]
 
 [params]
 
 nodes/root_type="StaticBody3D"
-nodes/root_name="Flatbase"
+nodes/root_name="Pyramid"
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
 nodes/import_as_skeleton_bones=false
