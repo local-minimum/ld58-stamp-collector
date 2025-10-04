@@ -13,8 +13,11 @@ func _ready() -> void:
     if __SignalBus.on_collect_stamp.connect(_handle_collect_stamp) != OK:
         push_error("Failed to connect collect stamp")
 
+    __SignalBus.on_set_required_stamps.emit(required_stamps_collected)
+
 func _handle_run_start() -> void:
     _collected_stamps.clear()
+    __SignalBus.on_set_required_stamps.emit(required_stamps_collected)
 
 func _handle_collect_stamp(stamp: CollectableStamp) -> void:
     if !_collected_stamps.has(stamp):
