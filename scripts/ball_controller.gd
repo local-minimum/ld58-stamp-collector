@@ -45,7 +45,7 @@ func _input(event: InputEvent) -> void:
     _acceleration = Vector3(x, 0, z)
     # print_debug("[Ball] Acc %s" % _acceleration)
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
     if !_started && _acceleration != Vector3.ZERO:
         _started = true
         __SignalBus.on_start_run.emit()

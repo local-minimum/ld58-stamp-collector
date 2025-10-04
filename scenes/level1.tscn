@@ -52,14 +52,59 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -4)
 [node name="flatbase8" parent="LevelGeometry" instance=ExtResource("2_bbk5w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -4)
 
+[node name="flatbase35" parent="LevelGeometry" instance=ExtResource("2_bbk5w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1, -4)
+
+[node name="flatbase36" parent="LevelGeometry" instance=ExtResource("2_bbk5w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -4)
+
+[node name="flatbase37" parent="LevelGeometry" instance=ExtResource("2_bbk5w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -1, -4)
+
 [node name="flatbase15" parent="LevelGeometry" instance=ExtResource("2_bbk5w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
 
 [node name="flatbase9" parent="LevelGeometry" instance=ExtResource("2_bbk5w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -2, -6)
 
+[node name="flatbase17" parent="LevelGeometry" instance=ExtResource("2_bbk5w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -2, -4)
+
+[node name="flatbase18" parent="LevelGeometry" instance=ExtResource("2_bbk5w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -2, -2)
+
+[node name="flatbase19" parent="LevelGeometry" instance=ExtResource("2_bbk5w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -1, -2)
+
+[node name="flatbase20" parent="LevelGeometry" instance=ExtResource("2_bbk5w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -1, 0)
+
+[node name="flatbase21" parent="LevelGeometry" instance=ExtResource("2_bbk5w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -1, 0)
+
+[node name="flatbase22" parent="LevelGeometry" instance=ExtResource("2_bbk5w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -2, 0)
+
 [node name="flatbase10" parent="LevelGeometry" instance=ExtResource("2_bbk5w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -2, -8)
+
+[node name="flatbase23" parent="LevelGeometry" instance=ExtResource("2_bbk5w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -3, -8)
+
+[node name="flatbase25" parent="LevelGeometry" instance=ExtResource("2_bbk5w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -3, -8)
+
+[node name="flatbase24" parent="LevelGeometry" instance=ExtResource("2_bbk5w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -3, -6)
+
+[node name="flatbase32" parent="LevelGeometry" instance=ExtResource("2_bbk5w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -3, -4)
+
+[node name="flatbase33" parent="LevelGeometry" instance=ExtResource("2_bbk5w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -3, -2)
+
+[node name="flatbase34" parent="LevelGeometry" instance=ExtResource("2_bbk5w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -3, 0)
 
 [node name="flatbase11" parent="LevelGeometry" instance=ExtResource("2_bbk5w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, -8)
@@ -67,8 +112,50 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, -8)
 [node name="flatbase12" parent="LevelGeometry" instance=ExtResource("2_bbk5w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -3, -8)
 
+[node name="flatbase26" parent="LevelGeometry" instance=ExtResource("2_bbk5w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -4, -8)
+
+[node name="flatbase30" parent="LevelGeometry" instance=ExtResource("2_bbk5w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -5, -8)
+
+[node name="flatbase38" parent="LevelGeometry" instance=ExtResource("2_bbk5w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -4, -8)
+
+[node name="flatbase39" parent="LevelGeometry" instance=ExtResource("2_bbk5w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -5, -8)
+
+[node name="flatbase40" parent="LevelGeometry" instance=ExtResource("2_bbk5w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, -8)
+
+[node name="flatbase41" parent="LevelGeometry" instance=ExtResource("2_bbk5w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, -8)
+
+[node name="flatbase42" parent="LevelGeometry" instance=ExtResource("2_bbk5w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -4, -8)
+
+[node name="flatbase43" parent="LevelGeometry" instance=ExtResource("2_bbk5w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -5, -8)
+
+[node name="flatbase44" parent="LevelGeometry" instance=ExtResource("2_bbk5w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -4, -8)
+
+[node name="flatbase45" parent="LevelGeometry" instance=ExtResource("2_bbk5w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -5, -8)
+
+[node name="flatbase31" parent="LevelGeometry" instance=ExtResource("2_bbk5w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -5, -10)
+
+[node name="flatbase27" parent="LevelGeometry" instance=ExtResource("2_bbk5w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -4, -10)
+
 [node name="flatbase13" parent="LevelGeometry" instance=ExtResource("2_bbk5w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -4, -12)
+
+[node name="flatbase28" parent="LevelGeometry" instance=ExtResource("2_bbk5w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -5, -12)
+
+[node name="flatbase29" parent="LevelGeometry" instance=ExtResource("2_bbk5w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -5, -12)
 
 [node name="flatbase14" parent="LevelGeometry" instance=ExtResource("2_bbk5w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -5, -12)
@@ -109,9 +196,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -4, -12)
 
 [node name="Narrow" parent="LevelGeometry" instance=ExtResource("7_d3jkd")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, -3, -8)
-
-[node name="Pyramid2" parent="LevelGeometry" instance=ExtResource("3_conm7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, -12)
 
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1, 0)
@@ -163,6 +247,9 @@ transform = Transform3D(1, 0, 2.98023e-08, 2.98023e-08, 1, 1.49012e-08, 2.98023e
 transform = Transform3D(1, 0, 2.98023e-08, 2.98023e-08, 1, 1.49012e-08, 2.98023e-08, 0, 1, 10.815, 0.92812, -6.16863)
 
 [node name="Checkpoint 3" type="Node3D" parent="Camera Track"]
-transform = Transform3D(1, 0, 2.98023e-08, 2.98023e-08, 1, 1.49012e-08, 2.98023e-08, 0, 1, 7.815, -4.07188, -13.1686)
+transform = Transform3D(1, 0, 2.98023e-08, 2.98023e-08, 1, 1.49012e-08, 2.98023e-08, 0, 1, 7.815, -1.07188, -13.1686)
+
+[node name="Narrow" parent="." instance=ExtResource("7_d3jkd")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -5, -12)
 
 [connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]
