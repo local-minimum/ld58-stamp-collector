@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://r014hgsbjcst"]
+[gd_scene load_steps=11 format=3 uid="uid://r014hgsbjcst"]
 
 [ext_resource type="PackedScene" uid="uid://blja4x0ic71px" path="res://scenes/blocks/flatbase.tscn" id="1_8ho6b"]
+[ext_resource type="Script" uid="uid://7fuanfr1bf0g" path="res://scripts/level.gd" id="1_nlqja"]
 [ext_resource type="PackedScene" uid="uid://3i1kb6v3egr2" path="res://scenes/blocks/pyramid.tscn" id="2_ph3nu"]
 [ext_resource type="PackedScene" uid="uid://c7qdipaiiomto" path="res://scenes/player/player.tscn" id="3_ph3nu"]
 [ext_resource type="PackedScene" uid="uid://b3rcjl01xw5ly" path="res://scenes/decorations/stamp.tscn" id="5_ckvwl"]
@@ -13,6 +14,9 @@
 size = Vector3(9, 1, 9)
 
 [node name="Level" type="Node3D"]
+script = ExtResource("1_nlqja")
+level_id = "lvl0"
+level_humanized_name = "Tutorial"
 
 [node name="Player" parent="." instance=ExtResource("3_ph3nu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000673145, 2.09366, -2.0266)

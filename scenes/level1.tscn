@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://osftwwpqyp15"]
+[gd_scene load_steps=13 format=3 uid="uid://osftwwpqyp15"]
 
 [ext_resource type="PackedScene" uid="uid://c7qdipaiiomto" path="res://scenes/player/player.tscn" id="1_ejswk"]
+[ext_resource type="Script" uid="uid://7fuanfr1bf0g" path="res://scripts/level.gd" id="1_u3awl"]
 [ext_resource type="PackedScene" uid="uid://blja4x0ic71px" path="res://scenes/blocks/flatbase.tscn" id="2_bbk5w"]
 [ext_resource type="PackedScene" uid="uid://3i1kb6v3egr2" path="res://scenes/blocks/pyramid.tscn" id="3_conm7"]
 [ext_resource type="PackedScene" uid="uid://b3rcjl01xw5ly" path="res://scenes/decorations/stamp.tscn" id="4_d3jkd"]
@@ -14,7 +15,10 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_4kmhl"]
 size = Vector3(9, 1, 9)
 
-[node name="Node3D" type="Node3D"]
+[node name="Level" type="Node3D"]
+script = ExtResource("1_u3awl")
+level_id = "lvl1"
+level_humanized_name = "Down is easy"
 
 [node name="Player" parent="." instance=ExtResource("1_ejswk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000673145, 2.09366, -2.0266)
