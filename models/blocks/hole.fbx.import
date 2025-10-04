@@ -13,8 +13,8 @@ dest_files=["res://.godot/imported/hole.fbx-a3286cd36d374f0fb48d7fe1d66c5f3c.scn
 
 [params]
 
-nodes/root_type=""
-nodes/root_name=""
+nodes/root_type="StaticBody3D"
+nodes/root_name="Holed"
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
 nodes/import_as_skeleton_bones=false

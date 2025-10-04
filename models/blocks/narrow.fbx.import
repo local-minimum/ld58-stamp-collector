@@ -13,8 +13,8 @@ dest_files=["res://.godot/imported/narrow.fbx-d7c5912288744012fe82ba630d1e6c4b.s
 
 [params]
 
-nodes/root_type=""
-nodes/root_name=""
+nodes/root_type="StaticBody3D"
+nodes/root_name="Narrow"
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
 nodes/import_as_skeleton_bones=false
