@@ -12,4 +12,10 @@ signal on_collect_stamp(stamp: CollectableStamp)
 signal on_forgot_stamps(remaining: int)
 signal on_level_completed()
 
+signal on_scene_transition_initiate()
+signal on_scene_transition_new_scene_ready()
+signal on_scene_transition_complete()
+signal on_scene_transition_fail()
+signal on_scene_transition_progress(progress: float)
+
 @warning_ignore_restore("unused_signal")

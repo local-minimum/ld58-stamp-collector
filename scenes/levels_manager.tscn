@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bpp0fc7ukpdlc"]
+
+[ext_resource type="Script" uid="uid://dlgx146emrujy" path="res://scripts/levels_manger.gd" id="1_60ues"]
+
+[node name="LevelsManager" type="Node"]
+script = ExtResource("1_60ues")
+scenes = Array[String](["res://scenes/tutorial.tscn", "res://scenes/level1.tscn"])
+metadata/_custom_type_script = "uid://dlgx146emrujy"

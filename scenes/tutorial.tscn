@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://r014hgsbjcst"]
+[gd_scene load_steps=10 format=3 uid="uid://r014hgsbjcst"]
 
 [ext_resource type="PackedScene" uid="uid://blja4x0ic71px" path="res://scenes/blocks/flatbase.tscn" id="1_8ho6b"]
 [ext_resource type="PackedScene" uid="uid://3i1kb6v3egr2" path="res://scenes/blocks/pyramid.tscn" id="2_ph3nu"]
@@ -7,8 +7,7 @@
 [ext_resource type="Script" uid="uid://ddqoxa0mtlejm" path="res://scripts/kill_zone.gd" id="5_cq4me"]
 [ext_resource type="Script" uid="uid://c16ixpg4aqpej" path="res://scripts/camera_path.gd" id="6_6yjpi"]
 [ext_resource type="PackedScene" uid="uid://cfj7cb6xeqdl5" path="res://scenes/decorations/goal.tscn" id="7_gbqnl"]
-[ext_resource type="Texture2D" uid="uid://djeoaqx5xcs6q" path="res://sprites/stamp.png" id="8_ckvwl"]
-[ext_resource type="Script" uid="uid://col0utow14y55" path="res://scripts/stamps_counter_ui.gd" id="9_nlqja"]
+[ext_resource type="PackedScene" uid="uid://dc0f4fsg3hrfh" path="res://scenes/level_canvas.tscn" id="8_ckvwl"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4kmhl"]
 size = Vector3(9, 1, 9)
@@ -140,37 +139,6 @@ transform = Transform3D(1, 0, 2.98023e-08, 2.98023e-08, 1, 1.49012e-08, 2.98023e
 [node name="Checkpoint 3" type="Node3D" parent="Camera Track"]
 transform = Transform3D(1, 0, 2.98023e-08, 2.98023e-08, 1, 1.49012e-08, 2.98023e-08, 0, 1, 17.815, 4.92812, 6.83137)
 
-[node name="Level Canvas" type="CanvasLayer" parent="."]
-
-[node name="TextureRect" type="TextureRect" parent="Level Canvas"]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -125.0
-offset_top = 29.0
-offset_right = -37.0
-offset_bottom = 117.0
-grow_horizontal = 0
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("8_ckvwl")
-expand_mode = 2
-stretch_mode = 4
-
-[node name="Remaining Stamps Counter" type="Label" parent="Level Canvas/TextureRect"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -8.0
-offset_bottom = -8.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0.552941, 0.580392, 0.603922, 1)
-theme_override_font_sizes/font_size = 52
-text = "4"
-horizontal_alignment = 1
-vertical_alignment = 1
-script = ExtResource("9_nlqja")
+[node name="Level Canvas" parent="." instance=ExtResource("8_ckvwl")]
 
 [connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]
