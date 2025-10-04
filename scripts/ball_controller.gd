@@ -43,7 +43,7 @@ func _input(event: InputEvent) -> void:
     var x: float = event.get_action_strength("roll_west") - event.get_action_strength("roll_east")
     var z: float = event.get_action_strength("roll_north") - event.get_action_strength("roll_south")
     _acceleration = Vector3(x, 0, z)
-    print_debug("[Ball] Acc %s" % _acceleration)
+    # print_debug("[Ball] Acc %s" % _acceleration)
 
 func _process(delta: float) -> void:
     if !_started && _acceleration != Vector3.ZERO:

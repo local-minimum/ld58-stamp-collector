@@ -30,6 +30,7 @@ script = ExtResource("2_gmlin")
 stamp_versions = [NodePath("Sphere"), NodePath("sphere_on_stamp"), NodePath("sphere_two_stamp"), NodePath("sphere_three_stamp"), NodePath("sphere_four_stamp"), NodePath("sphere_five_stamp")]
 stamp_colliders = [NodePath("SphareCollision"), NodePath("Stamp 1 Collision"), NodePath("Stamp 2 Collision"), NodePath("Stamp 3 Collision"), NodePath("Stamp 4 Collision"), NodePath("Stamp 5 Collision")]
 rotational_friction = 0.01
+goal_friction = 0.01
 
 [node name="Sphere" parent="." index="0"]
 visible = false

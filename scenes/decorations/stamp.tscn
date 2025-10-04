@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://b3rcjl01xw5ly"]
+[gd_scene load_steps=8 format=3 uid="uid://b3rcjl01xw5ly"]
 
 [ext_resource type="Script" uid="uid://bba38vvp4jl2x" path="res://scripts/collectable_stamp.gd" id="1_1guk1"]
 [ext_resource type="PackedScene" uid="uid://c4dja0lc67nly" path="res://models/decorations/stamp.fbx" id="1_xrcc2"]
+[ext_resource type="PackedScene" uid="uid://lmldlifgnqq6" path="res://scenes/decorations/heart_effect.tscn" id="3_ilevm"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_1guk1"]
 
@@ -82,5 +83,9 @@ libraries = {
 &"": SubResource("AnimationLibrary_1guk1")
 }
 next/Default = &"Default"
+
+[node name="heart" parent="." node_paths=PackedStringArray("_stamp") instance=ExtResource("3_ilevm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.322218, 0)
+_stamp = NodePath("..")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

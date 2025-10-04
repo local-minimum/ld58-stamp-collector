@@ -28,6 +28,7 @@ func _ready() -> void:
         push_error("Failed to connect collect stamp")
 
     reset_cam_to_start.call_deferred()
+    __SignalBus.on_ready_camera.emit(cam)
 
 var _tween: Tween
 
@@ -94,7 +95,7 @@ func _process(delta: float) -> void:
     var to: Vector3 = checkpoints[_checkpoint_idx + 1].global_position if _checkpoint_idx < checkpoints.size() else Vector3.ZERO
 
     # print_debug("[Cam] progress %.2f from %s to %s" % [progress, from, to])
-    if progress == 1.0:
+    if progress >= 1.0:
         cam.global_position = cam.global_position.lerp(to, delta)
         if _last_checkpoint + 1 < checkpoints.size():
             _checkpoint_idx += 1

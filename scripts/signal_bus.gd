@@ -2,6 +2,7 @@ extends Node
 class_name SignalBus
 
 @warning_ignore_start("unused_signal")
+signal on_ready_camera(cam: Camera3D)
 
 signal on_start_run()
 signal on_player_death()
