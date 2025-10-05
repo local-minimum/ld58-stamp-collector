@@ -52,9 +52,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
 [node name="flatbase7" parent="LevelGeometry" instance=ExtResource("1_8ho6b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -2)
 
-[node name="Pyramid2" parent="LevelGeometry" instance=ExtResource("2_ph3nu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 2)
-
 [node name="flatbase8" parent="LevelGeometry" instance=ExtResource("1_8ho6b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 4)
 
@@ -80,7 +77,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 6)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 8)
 
 [node name="Stamp" parent="LevelGeometry" instance=ExtResource("5_ckvwl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2, 2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1.4, 2)
 
 [node name="Goal" parent="LevelGeometry" instance=ExtResource("7_gbqnl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 1, 8)

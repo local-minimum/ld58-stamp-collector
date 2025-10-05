@@ -69,37 +69,48 @@ func reset_cam_to_start() -> void:
         reset_duration)
 
     _checkpoint_idx = 0
-    _last_checkpoint = Time.get_ticks_msec() / 1000.0
+    _last_checkpoint_time = Time.get_ticks_msec() / 1000.0
     _started = false
+    _completed = false
+    print_debug("[Cam] Reset to point 1/%s" % checkpoints.size())
 
 func _start_run() -> void:
     _started = true
-    _last_checkpoint = Time.get_ticks_msec() / 1000.0
+    _last_checkpoint_time = Time.get_ticks_msec() / 1000.0
 
 
 var _started: bool
 var _checkpoint_idx: int
-var _last_checkpoint: float
+var _last_checkpoint_time: float
+var _completed: bool
 
 func _process(delta: float) -> void:
     if !_started || _level_completed || _tween != null && _tween.is_running():
         return
 
+    if _completed:
+        cam.global_position = cam.global_position.lerp(checkpoints[-1].global_position, delta)
+        return
+
     var now: float = Time.get_ticks_msec() / 1000.0
-    var elapsed: float = now - _last_checkpoint
+    var elapsed: float = now - _last_checkpoint_time
     var duration: float = transition_times[_checkpoint_idx] if _checkpoint_idx < transition_times.size() else 1.0
 
     var progress: float = clampf(elapsed / duration, 0.0, 1.0)
 
     var from: Vector3 = checkpoints[_checkpoint_idx].global_position if _checkpoint_idx < checkpoints.size() else Vector3.ZERO
-    var to: Vector3 = checkpoints[_checkpoint_idx + 1].global_position if _checkpoint_idx < checkpoints.size() else Vector3.ZERO
+    var to: Vector3 = checkpoints[_checkpoint_idx + 1].global_position if _checkpoint_idx + 1 < checkpoints.size() else Vector3.ZERO
 
-    # print_debug("[Cam] progress %.2f from %s to %s" % [progress, from, to])
+    # print_debug("[Cam] progress %.2f on checkpoint %s")
     if progress >= 1.0:
         cam.global_position = cam.global_position.lerp(to, delta)
-        if _last_checkpoint + 1 < checkpoints.size():
-            _checkpoint_idx += 1
-            _last_checkpoint = now
-            print_debug("[Cam] Reached checkpoint %s" % _checkpoint_idx)
+        _last_checkpoint_time = now
+        _checkpoint_idx += 1
+
+        if _checkpoint_idx + 1 < checkpoints.size():
+            print_debug("[Cam] Reached checkpoint %s/%s" % [_checkpoint_idx + 1, checkpoints.size()])
+        else:
+            print_debug("[Cam] Reached end of track %s/%s" % [_checkpoint_idx + 1, checkpoints.size()])
+            _completed = true
     else:
         cam.global_position = cam.global_position.lerp(from.lerp(to, progress), delta)
