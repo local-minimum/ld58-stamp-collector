@@ -15,7 +15,7 @@ size = Vector3(1.7, 0.1, 1.7)
 viewport_path = NodePath("Hole Info/SubViewport")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dxla1"]
-size = Vector3(2, 2, 3)
+size = Vector3(1.5, 2, 2.8)
 
 [node name="Holed" node_paths=PackedStringArray("_lid", "_lid_collider", "_level_label") instance=ExtResource("1_6mfdx")]
 script = ExtResource("2_8ob1a")

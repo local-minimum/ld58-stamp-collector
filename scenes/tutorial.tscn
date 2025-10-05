@@ -16,7 +16,6 @@ size = Vector3(9, 1, 9)
 [node name="Level" type="Node3D"]
 script = ExtResource("1_nlqja")
 level_id = "tutorial"
-level_humanized_name = "Tutorial"
 
 [node name="Player" parent="." instance=ExtResource("3_ph3nu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000673145, 2.09366, -2.0266)
