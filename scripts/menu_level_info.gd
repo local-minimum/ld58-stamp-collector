@@ -39,6 +39,7 @@ func _sync() -> void:
 
     level_name.text = __LevelsManager.level_names[idx] if __LevelsManager.level_names.size() > idx else "???"
 
+    print_debug("[Menu Info] %s has deaths %s" % level_id, __GlobalState.get_deaths(level_id))
     level_deaths.text = "%s" % __GlobalState.get_deaths(level_id)
 
     var record: int = __GlobalState.get_best_time(level_id)

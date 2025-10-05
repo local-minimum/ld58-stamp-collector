@@ -30,11 +30,15 @@ func _on_menu_pressed() -> void:
 func _show_menu() -> void:
     _pause_start = Time.get_ticks_msec()
 
+    var current_id: String = __LevelsManager.level_id
+
+    level_name.text = __LevelsManager.level_name
+    deaths.text = "Deaths: %s" % __GlobalState.get_deaths(current_id)
+
     prev.visible = __LevelsManager.has_previous
 
     print_debug("[Pause] Has next %s, current level '%s' has been completed %s" % [__LevelsManager.has_next, __LevelsManager.level_id, __GlobalState.has_completed(__LevelsManager.level_id)])
     if __LevelsManager.has_next:
-        var current_id: String = __LevelsManager.level_id
         if __GlobalState.has_completed(current_id):
             next.visible = true
         else:

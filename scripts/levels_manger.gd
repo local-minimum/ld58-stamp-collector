@@ -26,6 +26,12 @@ var level_id: String:
 @export var level_ids: Array[String]
 @export var level_names: Array[String]
 
+var level_name: String:
+    get():
+        if _scene_idx >= 0 && _scene_idx < level_names.size():
+            return level_names[_scene_idx]
+        return ""
+
 func _ready() -> void:
     if __SignalBus.on_scene_transition_new_scene_ready.connect(_handle_new_scene_ready) != OK:
         push_error("Failed to connect new scene ready")

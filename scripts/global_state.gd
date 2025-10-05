@@ -10,6 +10,7 @@ func _ready() -> void:
         push_error("Failed to connect level stats updated")
 
 func _handle_update_level_stats(level: Level, is_update: bool) -> void:
+    print_debug("[GLobal State] level %s is updated %s with deaths %s" % [level.level_id, is_update, level.death_counter])
     if !is_update:
         return
 
@@ -28,6 +29,8 @@ func has_completed(level_id: String) -> bool:
 
 
 func get_deaths(level_id: String) -> int:
+    if !_deaths.has(level_id):
+        print_debug("[Global State] Doesn't have deaths for '%s' (%s)" % [level_id, _deaths])
     return _deaths.get(level_id, 0)
 
 var total_deaths: int:
