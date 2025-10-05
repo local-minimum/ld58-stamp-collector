@@ -29,6 +29,8 @@ gravity = Vector3(0, 0, 0)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1bbnt"]
 transparency = 1
 cull_mode = 2
+depth_draw_mode = 1
+no_depth_test = true
 albedo_color = Color(0.957716, 0, 0.158377, 1)
 albedo_texture = ExtResource("2_tmrbl")
 billboard_mode = 1
