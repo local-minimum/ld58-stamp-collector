@@ -5,7 +5,7 @@ extends Control
 @export var level_deaths: Label
 @export var level_record: Label
 
-var showing: int = -1
+var showing: Array[int]
 
 func _ready() -> void:
     if __SignalBus.on_menu_show_level_info.connect(_handle_show_info) != OK:
@@ -17,27 +17,27 @@ func _ready() -> void:
     _sync()
 
 func _handle_show_info(idx: int) -> void:
-    showing = idx
+    showing.erase(idx)
+    showing.append(idx)
     print_debug("[Level Info] Level %s" % idx)
     _sync()
 
 func _handle_hide_info(idx: int) -> void:
-    if showing == idx:
-        showing = -1
-
-        _sync()
+    showing.erase(idx)
+    _sync()
 
 func _sync() -> void:
-    if showing == -1:
+    if showing.is_empty():
         container.visible = false
         return
 
-    var level_id: String = __LevelsManager.level_ids[showing] if __LevelsManager.level_ids.size() > showing else ""
+    var idx: int = showing[-1]
+    var level_id: String = __LevelsManager.level_ids[idx] if __LevelsManager.level_ids.size() > idx else ""
     if level_id.is_empty():
         container.visible = false
         return
 
-    level_name.text = __LevelsManager.level_names[showing] if __LevelsManager.level_names.size() > showing else "???"
+    level_name.text = __LevelsManager.level_names[idx] if __LevelsManager.level_names.size() > idx else "???"
 
     level_deaths.text = "%s" % __GlobalState.get_deaths(level_id)
 
