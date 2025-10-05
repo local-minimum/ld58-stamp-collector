@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dbvb4jrl8gbnl"]
+[gd_scene load_steps=18 format=3 uid="uid://dbvb4jrl8gbnl"]
 
 [ext_resource type="Script" uid="uid://7fuanfr1bf0g" path="res://scripts/level.gd" id="1_p8q65"]
 [ext_resource type="PackedScene" uid="uid://c7qdipaiiomto" path="res://scenes/player/player.tscn" id="2_eq15a"]
@@ -18,6 +18,9 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4kmhl"]
 size = Vector3(9, 1, 9)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ssjpb"]
+viewport_path = NodePath("Node3D/SubViewport")
 
 [node name="Level" type="Node3D"]
 script = ExtResource("1_p8q65")
@@ -230,5 +233,28 @@ transform = Transform3D(-0.0686159, -0.13405, 0.988596, 0.0515435, 0.989132, 0.1
 transform = Transform3D(-0.0686159, 0.0515435, -0.996311, -0.13405, 0.989132, 0.0604042, 0.988596, 0.137701, -0.0609607, -0.883317, 0.0249541, -21.113)
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("12_jeox6")]
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 3, -7.7)
+
+[node name="SubViewport" type="SubViewport" parent="Node3D"]
+transparent_bg = true
+size = Vector2i(420, 100)
+
+[node name="Label" type="Label" parent="Node3D/SubViewport"]
+custom_minimum_size = Vector2(420, 100)
+offset_right = 202.0
+offset_bottom = 49.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 2
+theme_override_font_sizes/font_size = 32
+text = "Thank you for playing!
+You've made it to the end."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite3D" type="Sprite3D" parent="Node3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+texture = SubResource("ViewportTexture_ssjpb")
 
 [connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]

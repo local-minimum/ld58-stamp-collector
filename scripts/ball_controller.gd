@@ -39,12 +39,23 @@ func _handle_collect_stamp(stamp: CollectableStamp) -> void:
         _collected_stamps.append(stamp)
         _sync(_collected_stamps.size())
 
+var x: float
+var z: float
 func _input(event: InputEvent) -> void:
     if Engine.time_scale == 0:
         return
 
-    var x: float = event.get_action_strength("roll_west") - event.get_action_strength("roll_east")
-    var z: float = event.get_action_strength("roll_north") - event.get_action_strength("roll_south")
+    if event.is_action_pressed("roll_west") || event.is_action_released("roll_east"):
+        x += 1
+    elif event.is_action_released("roll_west") || event.is_action_pressed("roll_east"):
+        x -= 1
+
+    if event.is_action_pressed("roll_north") || event.is_action_released("roll_south"):
+        z += 1
+    elif event.is_action_released("roll_north") || event.is_action_pressed("roll_south"):
+        z -= 1
+    # var x: float = event.get_action_strength("roll_west") - event.get_action_strength("roll_east")
+    #@ var z: float = event.get_action_strength("roll_north") - event.get_action_strength("roll_south")
     _acceleration = Vector3(x, 0, z)
     # print_debug("[Ball] Acc %s" % _acceleration)
 
