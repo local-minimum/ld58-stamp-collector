@@ -15,6 +15,9 @@ func _ready() -> void:
     if __SignalBus.on_collect_stamp.connect(_handle_collect_stamp) != OK:
         push_error("Failed to connect collect stamp")
 
+    if __SignalBus.on_resume_play.connect(_handle_resume_play) != OK:
+        push_error("Failed to connect resume play")
+
     __SignalBus.on_set_required_stamps.emit(required_stamps_collected)
 
 var _run_start: int
@@ -23,6 +26,9 @@ func _handle_run_start(time: int) -> void:
     _run_start = time
     _collected_stamps.clear()
     __SignalBus.on_set_required_stamps.emit(required_stamps_collected)
+
+func _handle_resume_play(pause: int) -> void:
+    _run_start += pause
 
 func _handle_collect_stamp(stamp: CollectableStamp) -> void:
     if !_collected_stamps.has(stamp):

@@ -8,6 +8,7 @@ signal on_menu_hide_level_info(level_idx: int)
 signal on_ready_camera(cam: Camera3D)
 signal on_update_level_stats(level: Level, is_update: bool)
 
+signal on_resume_play(pause_duration: int)
 signal on_start_run(start: int)
 signal on_player_death()
 

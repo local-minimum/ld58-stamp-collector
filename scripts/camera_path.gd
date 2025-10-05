@@ -27,6 +27,9 @@ func _ready() -> void:
     if __SignalBus.on_collect_stamp.connect(_handle_collect_stamp) != OK:
         push_error("Failed to connect collect stamp")
 
+    if __SignalBus.on_resume_play.connect(_handle_resume_play) != OK:
+        push_error("Failed to connect resum play")
+
     reset_cam_to_start.call_deferred()
     __SignalBus.on_ready_camera.emit(cam)
 
@@ -84,8 +87,11 @@ var _checkpoint_idx: int
 var _last_checkpoint_time: float
 var _completed: bool
 
+func _handle_resume_play(pause: int) -> void:
+    _last_checkpoint_time += pause / 1000.0
+
 func _process(delta: float) -> void:
-    if !_started || _level_completed || _tween != null && _tween.is_running():
+    if Engine.time_scale == 0 || !_started || _level_completed || _tween != null && _tween.is_running():
         return
 
     if _completed:

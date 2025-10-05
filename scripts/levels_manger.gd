@@ -7,6 +7,20 @@ var _phase: Phase = Phase.IDLE
 var _loading_resource_path: String
 var _scene_idx: int = -1
 
+var has_previous: bool:
+    get():
+        return _scene_idx > 0
+
+var has_next: bool:
+    get():
+        return _scene_idx + 1 < scenes.size()
+
+var level_id: String:
+    get():
+        if _scene_idx >= 0 && _scene_idx < level_ids.size():
+            return level_ids[_scene_idx]
+        return ""
+
 @export var scenes: Array[String]
 @export var menu_scene: String = "menu"
 @export var level_ids: Array[String]
@@ -40,8 +54,19 @@ func transition_to_next_scene() -> bool:
     _scene_idx += 1
     return _load_scene()
 
+func transition_to_previous_scene() -> bool:
+    if _phase != Phase.IDLE:
+        return false
+
+    _scene_idx = maxi(-1, _scene_idx - 1)
+    return _load_scene()
+
+func transition_to_menu() -> void:
+    _scene_idx = -1
+    _load_scene()
+
 func _load_scene() -> bool:
-    if _scene_idx >= scenes.size():
+    if _scene_idx >= scenes.size() || _scene_idx < 0:
         _scene_idx = -1
         _loading_resource_path = menu_scene
     else:
