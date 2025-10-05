@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 __SignalBus="*res://scripts/signal_bus.gd"
 __LevelsManager="*res://scenes/levels_manager.tscn"
+__GlobalState="*res://scripts/global_state.gd"
 
 [display]
 
