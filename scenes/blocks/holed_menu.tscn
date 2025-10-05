@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dhdkujiu727ps"]
+[gd_scene load_steps=8 format=3 uid="uid://dhdkujiu727ps"]
 
 [ext_resource type="PackedScene" uid="uid://dj7bibbp6fqtd" path="res://scenes/blocks/holed.tscn" id="1_6mfdx"]
 [ext_resource type="Script" uid="uid://xgqwtvxayrmd" path="res://scripts/menu_hole.gd" id="2_8ob1a"]
@@ -11,10 +11,14 @@ size = Vector3(1.57227, 1, 1.48584)
 [sub_resource type="BoxShape3D" id="BoxShape3D_0kub4"]
 size = Vector3(1.7, 0.1, 1.7)
 
-[node name="Holed" node_paths=PackedStringArray("_lid", "_lid_collider") instance=ExtResource("1_6mfdx")]
+[sub_resource type="ViewportTexture" id="ViewportTexture_dxla1"]
+viewport_path = NodePath("Hole Info/SubViewport")
+
+[node name="Holed" node_paths=PackedStringArray("_lid", "_lid_collider", "_level_label") instance=ExtResource("1_6mfdx")]
 script = ExtResource("2_8ob1a")
 _lid = NodePath("hole-lid")
 _lid_collider = NodePath("hole-lid/StaticBody3D/CollisionShape3D")
+_level_label = NodePath("Hole Info/SubViewport/Label")
 
 [node name="Hole Trigger" type="Area3D" parent="." index="2"]
 
@@ -30,5 +34,26 @@ physics_material_override = ExtResource("4_dxla1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="hole-lid/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_0kub4")
+
+[node name="Hole Info" type="Node3D" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="SubViewport" type="SubViewport" parent="Hole Info" index="0"]
+transparent_bg = true
+size = Vector2i(66, 99)
+
+[node name="Label" type="Label" parent="Hole Info/SubViewport" index="0"]
+offset_right = 66.0
+offset_bottom = 99.0
+theme_override_colors/font_color = Color(0.223529, 0.898039, 0.898039, 0.752941)
+theme_override_font_sizes/font_size = 72
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite3D" type="Sprite3D" parent="Hole Info" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6, 0)
+billboard = 1
+texture = SubResource("ViewportTexture_dxla1")
 
 [connection signal="body_entered" from="Hole Trigger" to="." method="_on_hole_trigger_body_entered"]
