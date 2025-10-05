@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://r014hgsbjcst"]
+[gd_scene load_steps=13 format=3 uid="uid://r014hgsbjcst"]
 
 [ext_resource type="PackedScene" uid="uid://blja4x0ic71px" path="res://scenes/blocks/flatbase.tscn" id="1_8ho6b"]
 [ext_resource type="Script" uid="uid://7fuanfr1bf0g" path="res://scripts/level.gd" id="1_nlqja"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cfj7cb6xeqdl5" path="res://scenes/decorations/goal.tscn" id="7_gbqnl"]
 [ext_resource type="PackedScene" uid="uid://dc0f4fsg3hrfh" path="res://scenes/other/level_canvas.tscn" id="8_ckvwl"]
 [ext_resource type="PackedScene" uid="uid://pne0ugvlbqdo" path="res://scenes/decorations/backdrop.tscn" id="10_0epgs"]
+[ext_resource type="PackedScene" uid="uid://inn0btw8todq" path="res://world_environment.tscn" id="11_g2equ"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4kmhl"]
 size = Vector3(9, 1, 9)
@@ -144,5 +145,7 @@ transform = Transform3D(-0.0686159, -0.13405, 0.988596, 0.0515435, 0.989132, 0.1
 
 [node name="Backdrop" parent="Camera3D" instance=ExtResource("10_0epgs")]
 transform = Transform3D(-0.0686159, 0.0515435, -0.996311, -0.13405, 0.989132, 0.0604042, 0.988596, 0.137701, -0.0609607, -0.883317, 0.0249541, -21.113)
+
+[node name="WorldEnvironment" parent="." instance=ExtResource("11_g2equ")]
 
 [connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]

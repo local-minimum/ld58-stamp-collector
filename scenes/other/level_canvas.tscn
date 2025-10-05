@@ -7,8 +7,19 @@
 
 [node name="Level Canvas" type="CanvasLayer"]
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(250, 84)
 anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -240.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 100.0
+grow_horizontal = 0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -88.0
@@ -39,7 +50,7 @@ vertical_alignment = 1
 script = ExtResource("2_bd57i")
 
 [node name="Timer" type="VBoxContainer" parent="." node_paths=PackedStringArray("current", "highscore")]
-anchors_preset = -1
+anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_top = 20.0
