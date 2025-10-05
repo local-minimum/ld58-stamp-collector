@@ -6,4 +6,6 @@
 script = ExtResource("1_60ues")
 scenes = Array[String](["res://scenes/tutorial.tscn", "res://scenes/downhill.tscn"])
 menu_scene = "res://scenes/menu.tscn"
+level_ids = Array[String](["tutorial", "downhill"])
+level_names = Array[String](["Tutorial", "Down is Easy"])
 metadata/_custom_type_script = "uid://dlgx146emrujy"

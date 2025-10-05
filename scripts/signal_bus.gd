@@ -2,6 +2,9 @@ extends Node
 class_name SignalBus
 
 @warning_ignore_start("unused_signal")
+signal on_menu_show_level_info(level_idx: int)
+signal on_menu_hide_level_info(level_idx: int)
+
 signal on_ready_camera(cam: Camera3D)
 signal on_update_level_stats(level: Level)
 

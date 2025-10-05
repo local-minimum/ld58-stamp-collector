@@ -13,10 +13,9 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_4kmhl"]
 size = Vector3(9, 1, 9)
 
-[node name="Level" type="Node3D"]
+[node name="Menu" type="Node3D"]
 script = ExtResource("1_i6lef")
-level_id = "tutorial"
-level_humanized_name = "Tutorial"
+level_id = "menu"
 
 [node name="Player" parent="." instance=ExtResource("2_70i5f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000673145, 2.09366, -2.0266)
@@ -146,6 +145,39 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 
 [node name="Ramp2" parent="LevelGeometry" instance=ExtResource("6_70i5f")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
 
+[node name="Holed" parent="LevelGeometry" instance=ExtResource("9_i6lef")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -1, 4)
+
+[node name="Holed2" parent="LevelGeometry" instance=ExtResource("9_i6lef")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -1, 2)
+_required_level = "tutorial"
+_load_level_idx = 1
+
+[node name="Holed3" parent="LevelGeometry" instance=ExtResource("9_i6lef")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -1, 0)
+_required_level = "downhill"
+_load_level_idx = 2
+
+[node name="Holed4" parent="LevelGeometry" instance=ExtResource("9_i6lef")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -1, -2)
+_required_level = "xxx"
+_load_level_idx = 3
+
+[node name="Holed5" parent="LevelGeometry" instance=ExtResource("9_i6lef")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -1, -4)
+_required_level = "xxx"
+_load_level_idx = 4
+
+[node name="Holed6" parent="LevelGeometry" instance=ExtResource("9_i6lef")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -1, -6)
+_required_level = "xxx"
+_load_level_idx = 5
+
+[node name="Holed7" parent="LevelGeometry" instance=ExtResource("9_i6lef")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -1, -8)
+_required_level = "xxx"
+_load_level_idx = 6
+
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1, 0)
 script = ExtResource("7_7jp70")
@@ -195,37 +227,42 @@ transform = Transform3D(1, 0, 2.98023e-08, 2.98023e-08, 1, 1.49012e-08, 2.98023e
 [node name="Checkpoint 2" type="Node3D" parent="Camera Track"]
 transform = Transform3D(1, 0, 2.98023e-08, 2.98023e-08, 1, 1.49012e-08, 2.98023e-08, 0, 1, 9.515, 4.92812, -2.16863)
 
-[node name="Holed" parent="." instance=ExtResource("9_i6lef")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -1, 4)
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Holed2" parent="." instance=ExtResource("9_i6lef")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -1, 2)
-_required_level = "tutorial"
-_load_level_idx = 1
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
 
-[node name="Holed3" parent="." instance=ExtResource("9_i6lef")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -1, 0)
-_required_level = "downhill"
-_load_level_idx = 2
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PanelContainer"]
+layout_mode = 2
 
-[node name="Holed4" parent="." instance=ExtResource("9_i6lef")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -1, -2)
-_required_level = "xxx"
-_load_level_idx = 3
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer"]
+layout_mode = 2
 
-[node name="Holed5" parent="." instance=ExtResource("9_i6lef")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -1, -4)
-_required_level = "xxx"
-_load_level_idx = 4
+[node name="Label" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "LEVEL"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Holed6" parent="." instance=ExtResource("9_i6lef")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -1, -6)
-_required_level = "xxx"
-_load_level_idx = 5
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+columns = 2
 
-[node name="Holed7" parent="." instance=ExtResource("9_i6lef")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -1, -8)
-_required_level = "xxx"
-_load_level_idx = 6
+[node name="Time Label" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "BEST_TIME"
+
+[node name="Time Record" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "NOT_COMPLETED"
+horizontal_alignment = 2
+
+[node name="Deaths Label" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "DEATHS"
+
+[node name="Deaths" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 2
 
 [connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]

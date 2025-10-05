@@ -19,3 +19,11 @@ func _on_hole_trigger_body_entered(body:Node3D) -> void:
     if body is BallController:
         if open:
             __LevelsManager.transition_to_scene(_load_level_idx)
+
+func _on_proximity_body_entered(body: Node3D) -> void:
+    if body is BallController:
+        __SignalBus.on_menu_show_level_info.emit(_load_level_idx)
+
+func _on_proximity_body_exited(body: Node3D) -> void:
+    if body is BallController:
+        __SignalBus.on_menu_hide_level_info.emit(_load_level_idx)

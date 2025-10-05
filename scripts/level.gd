@@ -2,7 +2,6 @@ extends Node
 class_name Level
 
 @export var level_id: String
-@export var level_humanized_name: String
 
 var death_counter: int
 

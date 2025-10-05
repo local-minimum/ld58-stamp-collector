@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dhdkujiu727ps"]
+[gd_scene load_steps=9 format=3 uid="uid://dhdkujiu727ps"]
 
 [ext_resource type="PackedScene" uid="uid://dj7bibbp6fqtd" path="res://scenes/blocks/holed.tscn" id="1_6mfdx"]
 [ext_resource type="Script" uid="uid://xgqwtvxayrmd" path="res://scripts/menu_hole.gd" id="2_8ob1a"]
@@ -13,6 +13,9 @@ size = Vector3(1.7, 0.1, 1.7)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_dxla1"]
 viewport_path = NodePath("Hole Info/SubViewport")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dxla1"]
+size = Vector3(2, 2, 3)
 
 [node name="Holed" node_paths=PackedStringArray("_lid", "_lid_collider", "_level_label") instance=ExtResource("1_6mfdx")]
 script = ExtResource("2_8ob1a")
@@ -56,4 +59,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6, 0)
 billboard = 1
 texture = SubResource("ViewportTexture_dxla1")
 
+[node name="Proximity" type="Area3D" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Proximity" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -0.5)
+shape = SubResource("BoxShape3D_dxla1")
+
 [connection signal="body_entered" from="Hole Trigger" to="." method="_on_hole_trigger_body_entered"]
+[connection signal="body_entered" from="Proximity" to="." method="_on_proximity_body_entered"]
+[connection signal="body_exited" from="Proximity" to="." method="_on_proximity_body_exited"]

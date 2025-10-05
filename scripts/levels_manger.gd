@@ -9,6 +9,8 @@ var _scene_idx: int = -1
 
 @export var scenes: Array[String]
 @export var menu_scene: String = "menu"
+@export var level_ids: Array[String]
+@export var level_names: Array[String]
 
 func _ready() -> void:
     if __SignalBus.on_scene_transition_new_scene_ready.connect(_handle_new_scene_ready) != OK:
