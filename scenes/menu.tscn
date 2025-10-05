@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ojrxd2wwlkt"]
+[gd_scene load_steps=13 format=3 uid="uid://ojrxd2wwlkt"]
 
 [ext_resource type="Script" uid="uid://7fuanfr1bf0g" path="res://scripts/level.gd" id="1_i6lef"]
 [ext_resource type="PackedScene" uid="uid://c7qdipaiiomto" path="res://scenes/player/player.tscn" id="2_70i5f"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://c16ixpg4aqpej" path="res://scripts/camera_path.gd" id="8_mxgkd"]
 [ext_resource type="PackedScene" uid="uid://dhdkujiu727ps" path="res://scenes/blocks/holed_menu.tscn" id="9_i6lef"]
 [ext_resource type="Script" uid="uid://danqagl0qtbgr" path="res://scripts/menu_level_info.gd" id="10_70i5f"]
+[ext_resource type="PackedScene" uid="uid://pne0ugvlbqdo" path="res://scenes/decorations/backdrop.tscn" id="11_mj5lg"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4kmhl"]
 size = Vector3(9, 1, 9)
@@ -228,10 +229,9 @@ transform = Transform3D(1, 0, 2.98023e-08, 2.98023e-08, 1, 1.49012e-08, 2.98023e
 [node name="Checkpoint 2" type="Node3D" parent="Camera Track"]
 transform = Transform3D(1, 0, 2.98023e-08, 2.98023e-08, 1, 1.49012e-08, 2.98023e-08, 0, 1, 9.515, 4.92812, -2.16863)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Level Info Canvas" type="CanvasLayer" parent="."]
 
-[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer" node_paths=PackedStringArray("container", "level_name", "level_deaths", "level_record")]
-anchors_preset = -1
+[node name="Level Info" type="PanelContainer" parent="Level Info Canvas" node_paths=PackedStringArray("container", "level_name", "level_deaths", "level_record")]
 offset_left = 20.0
 offset_top = 20.0
 script = ExtResource("10_70i5f")
@@ -240,44 +240,47 @@ level_name = NodePath("MarginContainer/VBoxContainer/Level Name")
 level_deaths = NodePath("MarginContainer/VBoxContainer/GridContainer/Deaths")
 level_record = NodePath("MarginContainer/VBoxContainer/GridContainer/Time Record")
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Level Info Canvas/Level Info"]
 layout_mode = 2
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Level Info Canvas/Level Info/MarginContainer"]
 layout_mode = 2
 
-[node name="Level Name" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Level Name" type="Label" parent="Level Info Canvas/Level Info/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "LEVEL"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="GridContainer" type="GridContainer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="GridContainer" type="GridContainer" parent="Level Info Canvas/Level Info/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/h_separation = 8
 columns = 2
 
-[node name="Time Label" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+[node name="Time Label" type="Label" parent="Level Info Canvas/Level Info/MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
 text = "Record Time"
 
-[node name="Time Record" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+[node name="Time Record" type="Label" parent="Level Info Canvas/Level Info/MarginContainer/VBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="Deaths Label" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+[node name="Deaths Label" type="Label" parent="Level Info Canvas/Level Info/MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
 text = "Deaths"
 
-[node name="Deaths" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+[node name="Deaths" type="Label" parent="Level Info Canvas/Level Info/MarginContainer/VBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 text = "0"
 horizontal_alignment = 2
+
+[node name="Backdrop" parent="." instance=ExtResource("11_mj5lg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 5, 0)
 
 [connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]
