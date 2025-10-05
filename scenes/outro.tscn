@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dbvb4jrl8gbnl"]
+[gd_scene load_steps=20 format=3 uid="uid://dbvb4jrl8gbnl"]
 
 [ext_resource type="Script" uid="uid://7fuanfr1bf0g" path="res://scripts/level.gd" id="1_p8q65"]
 [ext_resource type="PackedScene" uid="uid://c7qdipaiiomto" path="res://scenes/player/player.tscn" id="2_eq15a"]
@@ -20,7 +20,13 @@
 size = Vector3(9, 1, 9)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_ssjpb"]
-viewport_path = NodePath("Node3D/SubViewport")
+viewport_path = NodePath("End Message 1/SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_h6h3x"]
+viewport_path = NodePath("End Message 2/SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_t6w51"]
+viewport_path = NodePath("End Message 3/SubViewport")
 
 [node name="Level" type="Node3D"]
 script = ExtResource("1_p8q65")
@@ -234,14 +240,14 @@ transform = Transform3D(-0.0686159, 0.0515435, -0.996311, -0.13405, 0.989132, 0.
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("12_jeox6")]
 
-[node name="Node3D" type="Node3D" parent="."]
+[node name="End Message 1" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 3, -7.7)
 
-[node name="SubViewport" type="SubViewport" parent="Node3D"]
+[node name="SubViewport" type="SubViewport" parent="End Message 1"]
 transparent_bg = true
 size = Vector2i(420, 100)
 
-[node name="Label" type="Label" parent="Node3D/SubViewport"]
+[node name="Label" type="Label" parent="End Message 1/SubViewport"]
 custom_minimum_size = Vector2(420, 100)
 offset_right = 202.0
 offset_bottom = 49.0
@@ -253,8 +259,54 @@ You've made it to the end."
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Sprite3D" type="Sprite3D" parent="Node3D"]
+[node name="Sprite3D" type="Sprite3D" parent="End Message 1"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 texture = SubResource("ViewportTexture_ssjpb")
+
+[node name="End Message 2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -18.7)
+
+[node name="SubViewport" type="SubViewport" parent="End Message 2"]
+transparent_bg = true
+size = Vector2i(420, 100)
+
+[node name="Label" type="Label" parent="End Message 2/SubViewport"]
+custom_minimum_size = Vector2(420, 100)
+offset_right = 202.0
+offset_bottom = 49.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 2
+theme_override_font_sizes/font_size = 32
+text = "This is not part of the game.
+There's only pain ahead."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite3D" type="Sprite3D" parent="End Message 2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+texture = SubResource("ViewportTexture_h6h3x")
+
+[node name="End Message 3" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, -4, -5.7)
+
+[node name="SubViewport" type="SubViewport" parent="End Message 3"]
+transparent_bg = true
+size = Vector2i(420, 100)
+
+[node name="Label" type="Label" parent="End Message 3/SubViewport"]
+custom_minimum_size = Vector2(420, 100)
+offset_right = 202.0
+offset_bottom = 49.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 2
+theme_override_font_sizes/font_size = 32
+text = "Why are you trying?
+Is it really time well spent?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite3D" type="Sprite3D" parent="End Message 3"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+texture = SubResource("ViewportTexture_t6w51")
 
 [connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]

@@ -54,10 +54,7 @@ func _input(event: InputEvent) -> void:
         z += 1
     elif event.is_action_released("roll_north") || event.is_action_pressed("roll_south"):
         z -= 1
-    # var x: float = event.get_action_strength("roll_west") - event.get_action_strength("roll_east")
-    #@ var z: float = event.get_action_strength("roll_north") - event.get_action_strength("roll_south")
     _acceleration = Vector3(x, 0, z)
-    # print_debug("[Ball] Acc %s" % _acceleration)
 
 func _physics_process(delta: float) -> void:
     if Engine.time_scale == 0:

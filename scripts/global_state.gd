@@ -9,6 +9,8 @@ func _ready() -> void:
     if __SignalBus.on_update_level_stats.connect(_handle_update_level_stats) != OK:
         push_error("Failed to connect level stats updated")
 
+    load_from_save(__Storage.retrieve_data(0, true))
+
 func _handle_update_level_stats(level: Level, is_update: bool) -> void:
     print_debug("[GLobal State] level %s is updated %s with deaths %s" % [level.level_id, is_update, level.death_counter])
     if !is_update:
@@ -24,11 +26,12 @@ func _handle_update_level_stats(level: Level, is_update: bool) -> void:
     if level.current_time_msec >= 0 && !_completed_levels.has(level.level_id):
         _completed_levels.append(level.level_id)
 
+    __Storage.store_data(0, get_save_data())
+
 func has_completed(level_id: String) -> bool:
     var completed = !level_id.is_empty() && _completed_levels.has(level_id)
     print_debug("[Global State] Level '%s' is completed %s" % [level_id, completed])
     return completed
-
 
 func get_deaths(level_id: String) -> int:
     if !_deaths.has(level_id):
