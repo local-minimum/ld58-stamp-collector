@@ -9,7 +9,10 @@ func _ready() -> void:
     if __SignalBus.on_update_level_stats.connect(_handle_update_level_stats) != OK:
         push_error("Failed to connect level stats updated")
 
-func _handle_update_level_stats(level: Level) -> void:
+func _handle_update_level_stats(level: Level, is_update: bool) -> void:
+    if !is_update:
+        return
+
     _deaths[level.level_id] = level.death_counter
 
     if level.best_time_msec >= 0:

@@ -1,18 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://dc0f4fsg3hrfh"]
+[gd_scene load_steps=4 format=3 uid="uid://dc0f4fsg3hrfh"]
 
 [ext_resource type="Texture2D" uid="uid://djeoaqx5xcs6q" path="res://sprites/stamp.png" id="1_t6krk"]
 [ext_resource type="Script" uid="uid://col0utow14y55" path="res://scripts/stamps_counter_ui.gd" id="2_bd57i"]
+[ext_resource type="Script" uid="uid://bk2agn6gvm2et" path="res://scripts/level_timer.gd" id="3_svufo"]
 
 [node name="Level Canvas" type="CanvasLayer"]
 
 [node name="TextureRect" type="TextureRect" parent="."]
-anchors_preset = 1
+anchors_preset = -1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -125.0
-offset_top = 29.0
-offset_right = -37.0
-offset_bottom = 117.0
+offset_left = -88.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 108.0
 grow_horizontal = 0
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -35,3 +36,34 @@ text = "4"
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("2_bd57i")
+
+[node name="Timer" type="VBoxContainer" parent="." node_paths=PackedStringArray("current", "highscore")]
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_top = 20.0
+offset_right = -120.0
+grow_horizontal = 0
+script = ExtResource("3_svufo")
+current = NodePath("Current Time")
+highscore = NodePath("Best Time")
+
+[node name="Current Time" type="Label" parent="Timer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.552941, 0.580392, 0.603922, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/font_size = 28
+text = "00.000"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Best Time" type="Label" parent="Timer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.552941, 0.580392, 0.603922, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/font_size = 28
+text = "00.000"
+horizontal_alignment = 2
+vertical_alignment = 1

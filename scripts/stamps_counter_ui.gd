@@ -18,7 +18,7 @@ func _enter_tree() -> void:
 
     _sync()
 
-func _clear_progress() -> void:
+func _clear_progress(_time: int = 0) -> void:
     _collected_stamps.clear()
     _sync()
 

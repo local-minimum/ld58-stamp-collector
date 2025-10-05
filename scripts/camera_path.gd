@@ -47,7 +47,7 @@ func _handle_collect_stamp(stamp: CollectableStamp) -> void:
 
     _tween.tween_method(func (_f: float) -> void: pass, 0.0, 1.0, cam_stamp_stay_duration)
 
-func _handle_level_completed() -> void:
+func _handle_level_completed(_time: int) -> void:
     _level_completed = true
 
 func reset_cam_to_start() -> void:
@@ -74,9 +74,9 @@ func reset_cam_to_start() -> void:
     _completed = false
     print_debug("[Cam] Reset to point 1/%s" % checkpoints.size())
 
-func _start_run() -> void:
+func _start_run(time: int) -> void:
     _started = true
-    _last_checkpoint_time = Time.get_ticks_msec() / 1000.0
+    _last_checkpoint_time = time / 1000.0
 
 
 var _started: bool

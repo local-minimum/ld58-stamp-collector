@@ -48,7 +48,7 @@ func _input(event: InputEvent) -> void:
 func _physics_process(delta: float) -> void:
     if !_started && _acceleration != Vector3.ZERO:
         _started = true
-        __SignalBus.on_start_run.emit()
+        __SignalBus.on_start_run.emit(Time.get_ticks_msec())
 
     if _level_completed:
         angular_velocity *= 1 - goal_friction
@@ -76,5 +76,5 @@ func kill() -> void:
     _collected_stamps.clear()
     _sync(0)
 
-func _handle_complete_level() -> void:
+func _handle_complete_level(_time: int) -> void:
     _level_completed = true
