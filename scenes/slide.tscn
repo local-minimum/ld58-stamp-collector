@@ -1,0 +1,228 @@
+[gd_scene load_steps=17 format=3 uid="uid://8r3ouo8oika0"]
+
+[ext_resource type="Script" uid="uid://7fuanfr1bf0g" path="res://scripts/level.gd" id="1_8r75b"]
+[ext_resource type="PackedScene" uid="uid://c7qdipaiiomto" path="res://scenes/player/player.tscn" id="2_ga6mx"]
+[ext_resource type="PackedScene" uid="uid://blja4x0ic71px" path="res://scenes/blocks/flatbase.tscn" id="3_m3okr"]
+[ext_resource type="PackedScene" uid="uid://3i1kb6v3egr2" path="res://scenes/blocks/pyramid.tscn" id="4_tusfb"]
+[ext_resource type="PackedScene" uid="uid://b3rcjl01xw5ly" path="res://scenes/decorations/stamp.tscn" id="5_klqhc"]
+[ext_resource type="PackedScene" uid="uid://cfj7cb6xeqdl5" path="res://scenes/decorations/goal.tscn" id="6_fplhb"]
+[ext_resource type="PackedScene" uid="uid://bgkntaurh3vs2" path="res://scenes/decorations/fence.tscn" id="7_f4ksa"]
+[ext_resource type="PackedScene" uid="uid://dyy4edfsrb58o" path="res://scenes/blocks/ramp.tscn" id="8_ga6mx"]
+[ext_resource type="Script" uid="uid://ddqoxa0mtlejm" path="res://scripts/kill_zone.gd" id="8_ltfri"]
+[ext_resource type="Script" uid="uid://c16ixpg4aqpej" path="res://scripts/camera_path.gd" id="9_db86n"]
+[ext_resource type="PackedScene" uid="uid://dj7bibbp6fqtd" path="res://scenes/blocks/holed.tscn" id="9_tusfb"]
+[ext_resource type="PackedScene" uid="uid://dc0f4fsg3hrfh" path="res://scenes/other/level_canvas.tscn" id="10_koxoi"]
+[ext_resource type="PackedScene" uid="uid://pne0ugvlbqdo" path="res://scenes/decorations/backdrop.tscn" id="11_fikr4"]
+[ext_resource type="PackedScene" uid="uid://inn0btw8todq" path="res://world_environment.tscn" id="12_knglr"]
+[ext_resource type="PackedScene" uid="uid://cpk06fq1fsego" path="res://scenes/blocks/narrow.tscn" id="14_m3okr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4kmhl"]
+size = Vector3(9, 1, 9)
+
+[node name="Level" type="Node3D"]
+script = ExtResource("1_8r75b")
+level_id = "slide"
+
+[node name="Player" parent="." instance=ExtResource("2_ga6mx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000673145, 2.09366, -2.0266)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.933041, -0.247494, -0.261114, 0.359769, 0.641862, 0.677185, 0, -0.725783, 0.687924, 0, 5.25578, 0)
+
+[node name="LevelGeometry" type="Node3D" parent="."]
+
+[node name="flatbase" parent="LevelGeometry" instance=ExtResource("3_m3okr")]
+
+[node name="Pyramid" parent="LevelGeometry" instance=ExtResource("4_tusfb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+
+[node name="flatbase3" parent="LevelGeometry" instance=ExtResource("3_m3okr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="flatbase4" parent="LevelGeometry" instance=ExtResource("3_m3okr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 2)
+
+[node name="flatbase5" parent="LevelGeometry" instance=ExtResource("3_m3okr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1, 4)
+
+[node name="flatbase6" parent="LevelGeometry" instance=ExtResource("3_m3okr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 4)
+
+[node name="flatbase7" parent="LevelGeometry" instance=ExtResource("3_m3okr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -2)
+
+[node name="flatbase12" parent="LevelGeometry" instance=ExtResource("3_m3okr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -1, 4)
+
+[node name="flatbase23" parent="LevelGeometry" instance=ExtResource("3_m3okr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -1, 6)
+
+[node name="flatbase24" parent="LevelGeometry" instance=ExtResource("3_m3okr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -2, 6)
+
+[node name="flatbase15" parent="LevelGeometry" instance=ExtResource("3_m3okr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -2, -2)
+
+[node name="flatbase19" parent="LevelGeometry" instance=ExtResource("3_m3okr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -2, -2)
+
+[node name="flatbase20" parent="LevelGeometry" instance=ExtResource("3_m3okr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, -3, -2)
+
+[node name="flatbase25" parent="LevelGeometry" instance=ExtResource("3_m3okr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, -3, 2)
+
+[node name="flatbase21" parent="LevelGeometry" instance=ExtResource("3_m3okr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, -3, 0)
+
+[node name="flatbase22" parent="LevelGeometry" instance=ExtResource("3_m3okr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, -3, 0)
+
+[node name="flatbase16" parent="LevelGeometry" instance=ExtResource("3_m3okr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -2, 0)
+
+[node name="flatbase17" parent="LevelGeometry" instance=ExtResource("3_m3okr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -2, 2)
+
+[node name="flatbase18" parent="LevelGeometry" instance=ExtResource("3_m3okr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -2, 4)
+
+[node name="flatbase13" parent="LevelGeometry" instance=ExtResource("3_m3okr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, -3, 6)
+
+[node name="flatbase14" parent="LevelGeometry" instance=ExtResource("3_m3okr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, -3, 8)
+
+[node name="Stamp" parent="LevelGeometry" instance=ExtResource("5_klqhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.6, 4)
+
+[node name="Goal" parent="LevelGeometry" instance=ExtResource("6_fplhb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, -2, 8)
+required_stamps_collected = 4
+
+[node name="Stamp2" parent="LevelGeometry" instance=ExtResource("5_klqhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0.83292, 3.2)
+
+[node name="Stamp3" parent="LevelGeometry" instance=ExtResource("5_klqhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -0.56708, -2)
+
+[node name="Stamp4" parent="LevelGeometry" instance=ExtResource("5_klqhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, -1.66708, 0)
+
+[node name="Fence" parent="LevelGeometry" instance=ExtResource("7_f4ksa")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 11, -1, 5.98079)
+
+[node name="Fence2" parent="LevelGeometry" instance=ExtResource("7_f4ksa")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 11, -1, 3.98079)
+
+[node name="Fence3" parent="LevelGeometry" instance=ExtResource("7_f4ksa")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 11, -1, 1.98079)
+
+[node name="Fence4" parent="LevelGeometry" instance=ExtResource("7_f4ksa")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 11, -2, -0.0192122)
+
+[node name="Fence10" parent="LevelGeometry" instance=ExtResource("7_f4ksa")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1, 1, 2.23517e-08)
+
+[node name="Ramp" parent="LevelGeometry" instance=ExtResource("8_ga6mx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+
+[node name="Ramp2" parent="LevelGeometry" instance=ExtResource("8_ga6mx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+
+[node name="Ramp3" parent="LevelGeometry" instance=ExtResource("8_ga6mx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -1, 2)
+
+[node name="Ramp9" parent="LevelGeometry" instance=ExtResource("8_ga6mx")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8, 0, 6)
+
+[node name="Ramp4" parent="LevelGeometry" instance=ExtResource("8_ga6mx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -1, 0)
+
+[node name="Ramp5" parent="LevelGeometry" instance=ExtResource("8_ga6mx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -1, -2)
+
+[node name="Holed" parent="LevelGeometry" instance=ExtResource("9_tusfb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, -3, 4)
+
+[node name="Ramp6" parent="LevelGeometry" instance=ExtResource("8_ga6mx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, -2, 2)
+
+[node name="Ramp7" parent="LevelGeometry" instance=ExtResource("8_ga6mx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, -2, 4)
+
+[node name="Ramp8" parent="LevelGeometry" instance=ExtResource("8_ga6mx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, -2, 6)
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1, 0)
+script = ExtResource("8_ltfri")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6, 0)
+shape = SubResource("BoxShape3D_4kmhl")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -2, 3)
+shape = SubResource("BoxShape3D_4kmhl")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, -2, -3)
+shape = SubResource("BoxShape3D_4kmhl")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -1, 7)
+shape = SubResource("BoxShape3D_4kmhl")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -2)
+shape = SubResource("BoxShape3D_4kmhl")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -9)
+shape = SubResource("BoxShape3D_4kmhl")
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, -3, 7)
+shape = SubResource("BoxShape3D_4kmhl")
+
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, -3, -1)
+shape = SubResource("BoxShape3D_4kmhl")
+
+[node name="Camera Track" type="Node3D" parent="." node_paths=PackedStringArray("player", "cam", "checkpoints")]
+script = ExtResource("9_db86n")
+player = NodePath("../Player")
+cam = NodePath("../Camera3D")
+checkpoints = [NodePath("Checkpoint 1"), NodePath("Checkpoint 2"), NodePath("Checkpoint 3"), NodePath("Checkpoint 4")]
+transition_times = Array[float]([3.0, 5.0, 7.0])
+
+[node name="Checkpoint 1" type="Node3D" parent="Camera Track"]
+transform = Transform3D(1, 0, 2.98023e-08, 2.98023e-08, 1, 1.49012e-08, 2.98023e-08, 0, 1, 7.81498, 2.92812, -2.16863)
+
+[node name="Checkpoint 2" type="Node3D" parent="Camera Track"]
+transform = Transform3D(1, 0, 2.98023e-08, 2.98023e-08, 1, 1.49012e-08, 2.98023e-08, 0, 1, 12.815, 2.92812, 2.83137)
+
+[node name="Checkpoint 3" type="Node3D" parent="Camera Track"]
+transform = Transform3D(1, 0, 2.98023e-08, 2.98023e-08, 1, 1.49012e-08, 2.98023e-08, 0, 1, 18.815, 1.92812, -2.16863)
+
+[node name="Checkpoint 4" type="Node3D" parent="Camera Track"]
+transform = Transform3D(1, 0, 2.98023e-08, 2.98023e-08, 1, 1.49012e-08, 2.98023e-08, 0, 1, 22.815, 1.92812, 6.83137)
+
+[node name="Level Canvas" parent="." instance=ExtResource("10_koxoi")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.0686159, -0.13405, 0.988596, 0.0515435, 0.989132, 0.137701, -0.996311, 0.0604042, -0.0609607, 7.81498, 2.92812, -2.16863)
+
+[node name="Backdrop" parent="Camera3D" instance=ExtResource("11_fikr4")]
+transform = Transform3D(-0.0686159, 0.0515435, -0.996311, -0.13405, 0.989132, 0.0604042, 0.988596, 0.137701, -0.0609607, -0.883317, 0.0249541, -21.113)
+
+[node name="WorldEnvironment" parent="." instance=ExtResource("12_knglr")]
+
+[node name="Narrow" parent="." instance=ExtResource("14_m3okr")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4, -1, 4)
+
+[node name="Narrow2" parent="." instance=ExtResource("14_m3okr")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6, -1, 4)
+
+[connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]

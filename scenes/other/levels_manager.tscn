@@ -4,8 +4,8 @@
 
 [node name="LevelsManager" type="Node"]
 script = ExtResource("1_60ues")
-scenes = Array[String](["res://scenes/tutorial.tscn", "res://scenes/the_snake.tscn", "res://scenes/rampup.tscn", "res://scenes/zigzag.tscn", "res://scenes/downhill.tscn"])
+scenes = Array[String](["res://scenes/tutorial.tscn", "res://scenes/the_snake.tscn", "res://scenes/rampup.tscn", "res://scenes/zigzag.tscn", "res://scenes/downhill.tscn", "res://scenes/slide.tscn"])
 menu_scene = "res://scenes/menu.tscn"
-level_ids = Array[String](["tutorial", "the snake", "rampup", "zigzag", "downhill"])
-level_names = Array[String](["Tutorial", "The Snake", "Ramp Up", "Zig Zag", "Down is Easy"])
+level_ids = Array[String](["tutorial", "the snake", "rampup", "zigzag", "downhill", "slide"])
+level_names = Array[String](["Tutorial", "The Snake", "Ramp Up", "Zig Zag", "Down is Easy", "Slide"])
 metadata/_custom_type_script = "uid://dlgx146emrujy"
