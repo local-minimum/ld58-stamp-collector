@@ -1,0 +1,34 @@
+[gd_scene load_steps=7 format=3 uid="uid://dhdkujiu727ps"]
+
+[ext_resource type="PackedScene" uid="uid://dj7bibbp6fqtd" path="res://scenes/blocks/holed.tscn" id="1_6mfdx"]
+[ext_resource type="Script" uid="uid://xgqwtvxayrmd" path="res://scripts/menu_hole.gd" id="2_8ob1a"]
+[ext_resource type="PackedScene" uid="uid://dmpswamk0dvpl" path="res://models/decorations/hole-lid.fbx" id="3_0kub4"]
+[ext_resource type="PhysicsMaterial" uid="uid://cnj6pjoh8s4f5" path="res://scenes/blocks/default_surface_mat.tres" id="4_dxla1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8ob1a"]
+size = Vector3(1.57227, 1, 1.48584)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0kub4"]
+size = Vector3(1.7, 0.1, 1.7)
+
+[node name="Holed" node_paths=PackedStringArray("_lid", "_lid_collider") instance=ExtResource("1_6mfdx")]
+script = ExtResource("2_8ob1a")
+_lid = NodePath("hole-lid")
+_lid_collider = NodePath("hole-lid/StaticBody3D/CollisionShape3D")
+
+[node name="Hole Trigger" type="Area3D" parent="." index="2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hole Trigger" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00577266, -0.638351, -0.0160804)
+shape = SubResource("BoxShape3D_8ob1a")
+
+[node name="hole-lid" parent="." index="3" instance=ExtResource("3_0kub4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="hole-lid" index="1"]
+physics_material_override = ExtResource("4_dxla1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hole-lid/StaticBody3D" index="0"]
+shape = SubResource("BoxShape3D_0kub4")
+
+[connection signal="body_entered" from="Hole Trigger" to="." method="_on_hole_trigger_body_entered"]

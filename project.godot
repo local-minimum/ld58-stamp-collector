@@ -11,19 +11,21 @@ config_version=5
 [application]
 
 config/name="LD58 The Stamp Collector"
-run/main_scene="uid://r014hgsbjcst"
+run/main_scene="uid://ojrxd2wwlkt"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 __SignalBus="*res://scripts/signal_bus.gd"
-__LevelsManager="*res://scenes/levels_manager.tscn"
+__LevelsManager="*res://scenes/other/levels_manager.tscn"
 __GlobalState="*res://scripts/global_state.gd"
 
 [display]
 
+window/size/mode=4
 window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 
 [input]
 

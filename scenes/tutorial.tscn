@@ -8,14 +8,14 @@
 [ext_resource type="Script" uid="uid://ddqoxa0mtlejm" path="res://scripts/kill_zone.gd" id="5_cq4me"]
 [ext_resource type="Script" uid="uid://c16ixpg4aqpej" path="res://scripts/camera_path.gd" id="6_6yjpi"]
 [ext_resource type="PackedScene" uid="uid://cfj7cb6xeqdl5" path="res://scenes/decorations/goal.tscn" id="7_gbqnl"]
-[ext_resource type="PackedScene" uid="uid://dc0f4fsg3hrfh" path="res://scenes/level_canvas.tscn" id="8_ckvwl"]
+[ext_resource type="PackedScene" uid="uid://dc0f4fsg3hrfh" path="res://scenes/other/level_canvas.tscn" id="8_ckvwl"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4kmhl"]
 size = Vector3(9, 1, 9)
 
 [node name="Level" type="Node3D"]
 script = ExtResource("1_nlqja")
-level_id = "lvl0"
+level_id = "tutorial"
 level_humanized_name = "Tutorial"
 
 [node name="Player" parent="." instance=ExtResource("3_ph3nu")]

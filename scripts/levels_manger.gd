@@ -25,11 +25,20 @@ func _process(_delta: float) -> void:
 func _handle_new_scene_ready() -> void:
     _phase = Phase.SWAPPING_COMPLETE
 
+func transition_to_scene(idx: int) -> bool:
+    if _phase != Phase.IDLE:
+        return false
+    _scene_idx = idx
+    return _load_scene()
+
 func transition_to_next_scene() -> bool:
     if _phase != Phase.IDLE:
         return false
 
     _scene_idx += 1
+    return _load_scene()
+
+func _load_scene() -> bool:
     if _scene_idx >= scenes.size():
         _scene_idx = -1
         _loading_resource_path = menu_scene
