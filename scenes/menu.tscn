@@ -25,6 +25,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000673145, 2.09366, -2.026
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-4.2222e-08, -0.258819, 0.965926, -1.13133e-08, 0.965926, 0.258819, -1, 0, -4.37114e-08, 7.81498, 4.92812, -2.16863)
 
+[node name="Backdrop" parent="Camera3D" instance=ExtResource("11_mj5lg")]
+transform = Transform3D(-4.2222e-08, -1.13133e-08, -1, -0.258819, 0.965926, 9.18596e-17, 0.965926, 0.258819, -4.37114e-08, -2.16863, 6.2332, -22.9849)
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.933041, -0.247494, -0.261114, 0.359769, 0.641862, 0.677185, 0, -0.725783, 0.687924, 0, 5.25578, 0)
 
@@ -279,8 +282,5 @@ custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 text = "0"
 horizontal_alignment = 2
-
-[node name="Backdrop" parent="." instance=ExtResource("11_mj5lg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 5, 0)
 
 [connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]

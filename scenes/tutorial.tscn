@@ -21,9 +21,6 @@ level_id = "tutorial"
 [node name="Player" parent="." instance=ExtResource("3_ph3nu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000673145, 2.09366, -2.0266)
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-0.306487, -0.593162, 0.744462, -0.117433, 0.799689, 0.588819, -0.944603, 0.0930412, -0.314751, 7.81498, 4.92812, -2.16863)
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.933041, -0.247494, -0.261114, 0.359769, 0.641862, 0.677185, 0, -0.725783, 0.687924, 0, 5.25578, 0)
 
@@ -132,17 +129,20 @@ checkpoints = [NodePath("Checkpoint 1"), NodePath("Checkpoint 2"), NodePath("Che
 transition_times = Array[float]([15.0, 10.0])
 
 [node name="Checkpoint 1" type="Node3D" parent="Camera Track"]
-transform = Transform3D(1, 0, 2.98023e-08, 2.98023e-08, 1, 1.49012e-08, 2.98023e-08, 0, 1, 7.81498, 4.92812, -2.16863)
+transform = Transform3D(1, 0, 2.98023e-08, 2.98023e-08, 1, 1.49012e-08, 2.98023e-08, 0, 1, 7.81498, 2.92812, -2.16863)
 
 [node name="Checkpoint 2" type="Node3D" parent="Camera Track"]
-transform = Transform3D(1, 0, 2.98023e-08, 2.98023e-08, 1, 1.49012e-08, 2.98023e-08, 0, 1, 15.815, 4.92812, 0.831367)
+transform = Transform3D(1, 0, 2.98023e-08, 2.98023e-08, 1, 1.49012e-08, 2.98023e-08, 0, 1, 15.815, 2.92812, 0.831367)
 
 [node name="Checkpoint 3" type="Node3D" parent="Camera Track"]
-transform = Transform3D(1, 0, 2.98023e-08, 2.98023e-08, 1, 1.49012e-08, 2.98023e-08, 0, 1, 17.815, 4.92812, 6.83137)
+transform = Transform3D(1, 0, 2.98023e-08, 2.98023e-08, 1, 1.49012e-08, 2.98023e-08, 0, 1, 17.815, 2.92812, 6.83137)
 
 [node name="Level Canvas" parent="." instance=ExtResource("8_ckvwl")]
 
-[node name="Backdrop" parent="." instance=ExtResource("10_0epgs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.0686159, -0.13405, 0.988596, 0.0515435, 0.989132, 0.137701, -0.996311, 0.0604042, -0.0609607, 7.81498, 2.92812, -2.16863)
+
+[node name="Backdrop" parent="Camera3D" instance=ExtResource("10_0epgs")]
+transform = Transform3D(-0.0686159, 0.0515435, -0.996311, -0.13405, 0.989132, 0.0604042, 0.988596, 0.137701, -0.0609607, -0.883317, 0.0249541, -21.113)
 
 [connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]
