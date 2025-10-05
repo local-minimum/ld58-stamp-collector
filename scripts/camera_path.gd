@@ -94,6 +94,8 @@ func _process(delta: float) -> void:
     if Engine.time_scale == 0 || !_started || _level_completed || _tween != null && _tween.is_running():
         return
 
+    cam.global_rotation = lerp(cam.global_basis.get_rotation_quaternion(), _cam_start_rotation , delta).get_euler()
+
     if _completed:
         cam.global_position = cam.global_position.lerp(checkpoints[-1].global_position, delta)
         return

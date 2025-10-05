@@ -127,7 +127,7 @@ script = ExtResource("6_6yjpi")
 player = NodePath("../Player")
 cam = NodePath("../Camera3D")
 checkpoints = [NodePath("Checkpoint 1"), NodePath("Checkpoint 2"), NodePath("Checkpoint 3")]
-transition_times = Array[float]([15.0, 10.0])
+transition_times = Array[float]([8.0, 10.0])
 
 [node name="Checkpoint 1" type="Node3D" parent="Camera Track"]
 transform = Transform3D(1, 0, 2.98023e-08, 2.98023e-08, 1, 1.49012e-08, 2.98023e-08, 0, 1, 7.81498, 2.92812, -2.16863)
