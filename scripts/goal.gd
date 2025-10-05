@@ -4,6 +4,7 @@ class_name Goal
 @export var required_stamps_collected: int
 @export var confetti: Array[GPUParticles3D]
 @export var delay_before_load_next: float = 1.0
+@export var go_to_menu_after: bool
 
 var _collected_stamps: Array[CollectableStamp]
 var _completed: bool
@@ -47,6 +48,9 @@ func _on_body_entered(body:Node3D) -> void:
         for conf: GPUParticles3D in confetti:
             conf.restart()
         await get_tree().create_timer(delay_before_load_next).timeout
-        __LevelsManager.transition_to_next_scene()
+        if go_to_menu_after:
+            __LevelsManager.transition_to_menu()
+        else:
+            __LevelsManager.transition_to_next_scene()
     else:
         __SignalBus.on_forgot_stamps.emit(required_stamps_collected - _collected_stamps.size())

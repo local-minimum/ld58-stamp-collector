@@ -28,6 +28,7 @@ func get_level_id(idx: int) -> String:
 
 @export var scenes: Array[String]
 @export var menu_scene: String = "menu"
+@export var outro_scene: String = "outro"
 @export var level_ids: Array[String]
 @export var level_names: Array[String]
 
@@ -77,9 +78,12 @@ func transition_to_menu() -> void:
     _load_scene()
 
 func _load_scene() -> bool:
-    if _scene_idx >= scenes.size() || _scene_idx < 0:
+    if _scene_idx < 0:
         _scene_idx = -1
         _loading_resource_path = menu_scene
+    elif _scene_idx >= scenes.size():
+        _scene_idx = -1
+        _loading_resource_path = outro_scene
     else:
         _loading_resource_path = scenes[_scene_idx]
 
