@@ -43,7 +43,7 @@ func _on_body_entered(body:Node3D) -> void:
 
     if _collected_stamps.size() >= required_stamps_collected:
         _completed = true
-        __SignalBus.on_level_completed.emit(maxi(0, Time.get_ticks_msec() - _run_start))
+        __SignalBus.on_level_completed.emit(self, maxi(0, Time.get_ticks_msec() - _run_start))
         for conf: GPUParticles3D in confetti:
             conf.restart()
         await get_tree().create_timer(delay_before_load_next).timeout

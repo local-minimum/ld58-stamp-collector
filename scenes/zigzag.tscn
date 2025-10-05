@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://crcutxer4vp0n"]
+[gd_scene load_steps=15 format=3 uid="uid://crcutxer4vp0n"]
 
 [ext_resource type="Script" uid="uid://7fuanfr1bf0g" path="res://scripts/level.gd" id="1_2dtan"]
 [ext_resource type="PackedScene" uid="uid://c7qdipaiiomto" path="res://scenes/player/player.tscn" id="2_plyle"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cfj7cb6xeqdl5" path="res://scenes/decorations/goal.tscn" id="6_su25b"]
 [ext_resource type="Script" uid="uid://ddqoxa0mtlejm" path="res://scripts/kill_zone.gd" id="7_p3b3i"]
 [ext_resource type="PackedScene" uid="uid://dj7bibbp6fqtd" path="res://scenes/blocks/holed.tscn" id="7_plyle"]
+[ext_resource type="PackedScene" uid="uid://bgkntaurh3vs2" path="res://scenes/decorations/fence.tscn" id="8_54nag"]
 [ext_resource type="Script" uid="uid://c16ixpg4aqpej" path="res://scripts/camera_path.gd" id="8_kpnei"]
 [ext_resource type="PackedScene" uid="uid://dc0f4fsg3hrfh" path="res://scenes/other/level_canvas.tscn" id="9_xyuc4"]
 [ext_resource type="PackedScene" uid="uid://pne0ugvlbqdo" path="res://scenes/decorations/backdrop.tscn" id="10_u6tv3"]
@@ -109,6 +110,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 2)
 [node name="Holed5" parent="LevelGeometry" instance=ExtResource("7_plyle")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
 
+[node name="Fence" parent="LevelGeometry" instance=ExtResource("8_54nag")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1)
+
+[node name="Fence2" parent="LevelGeometry" instance=ExtResource("8_54nag")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1, -3)
+
+[node name="Fence3" parent="LevelGeometry" instance=ExtResource("8_54nag")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1, -3)
+
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1, 0)
 script = ExtResource("7_p3b3i")
@@ -149,13 +159,13 @@ script = ExtResource("8_kpnei")
 player = NodePath("../Player")
 cam = NodePath("../Camera3D")
 checkpoints = [NodePath("Checkpoint 1"), NodePath("Checkpoint 2"), NodePath("Checkpoint 3")]
-transition_times = Array[float]([8.0, 10.0])
+transition_times = Array[float]([8.0, 3.0])
 
 [node name="Checkpoint 1" type="Node3D" parent="Camera Track"]
 transform = Transform3D(1, 0, 2.98023e-08, 2.98023e-08, 1, 1.49012e-08, 2.98023e-08, 0, 1, 4.81498, 2.92812, -2.16863)
 
 [node name="Checkpoint 2" type="Node3D" parent="Camera Track"]
-transform = Transform3D(1, 0, 2.98023e-08, 2.98023e-08, 1, 1.49012e-08, 2.98023e-08, 0, 1, 14.815, 2.92812, -2.16863)
+transform = Transform3D(1, 0, 2.98023e-08, 2.98023e-08, 1, 1.49012e-08, 2.98023e-08, 0, 1, 15.415, 2.92812, -2.16863)
 
 [node name="Checkpoint 3" type="Node3D" parent="Camera Track"]
 transform = Transform3D(1, 0, 2.98023e-08, 2.98023e-08, 1, 1.49012e-08, 2.98023e-08, 0, 1, 17.815, 2.92812, 6.83137)

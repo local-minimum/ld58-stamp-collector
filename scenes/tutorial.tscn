@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://r014hgsbjcst"]
+[gd_scene load_steps=14 format=3 uid="uid://r014hgsbjcst"]
 
 [ext_resource type="PackedScene" uid="uid://blja4x0ic71px" path="res://scenes/blocks/flatbase.tscn" id="1_8ho6b"]
 [ext_resource type="Script" uid="uid://7fuanfr1bf0g" path="res://scripts/level.gd" id="1_nlqja"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dc0f4fsg3hrfh" path="res://scenes/other/level_canvas.tscn" id="8_ckvwl"]
 [ext_resource type="PackedScene" uid="uid://pne0ugvlbqdo" path="res://scenes/decorations/backdrop.tscn" id="10_0epgs"]
 [ext_resource type="PackedScene" uid="uid://inn0btw8todq" path="res://world_environment.tscn" id="11_g2equ"]
+[ext_resource type="PackedScene" uid="uid://bgkntaurh3vs2" path="res://scenes/decorations/fence.tscn" id="12_tbcdj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4kmhl"]
 size = Vector3(9, 1, 9)
@@ -86,6 +87,36 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.53292, -2)
 
 [node name="Stamp3" parent="LevelGeometry" instance=ExtResource("5_ckvwl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 1.53292, 4)
+
+[node name="Fence" parent="LevelGeometry" instance=ExtResource("12_tbcdj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, -2.9)
+
+[node name="Fence3" parent="LevelGeometry" instance=ExtResource("12_tbcdj")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.9, 1, 2)
+
+[node name="Fence4" parent="LevelGeometry" instance=ExtResource("12_tbcdj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 1, 3)
+
+[node name="Fence2" parent="LevelGeometry" instance=ExtResource("12_tbcdj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, 4.9)
+
+[node name="Fence5" parent="LevelGeometry" instance=ExtResource("12_tbcdj")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5, 1, 2)
+
+[node name="Fence10" parent="LevelGeometry" instance=ExtResource("12_tbcdj")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5, 1, -1.9)
+
+[node name="Fence6" parent="LevelGeometry" instance=ExtResource("12_tbcdj")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7, 1, 2)
+
+[node name="Fence7" parent="LevelGeometry" instance=ExtResource("12_tbcdj")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 9, 1, 2)
+
+[node name="Fence8" parent="LevelGeometry" instance=ExtResource("12_tbcdj")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 13, 1, 4)
+
+[node name="Fence9" parent="LevelGeometry" instance=ExtResource("12_tbcdj")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 12, 1, 3)
 
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1, 0)

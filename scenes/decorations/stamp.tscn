@@ -8,7 +8,7 @@
 
 [sub_resource type="Animation" id="Animation_xrcc2"]
 resource_name = "Default"
-length = 1.5
+length = 2.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -16,7 +16,7 @@ tracks/0/path = NodePath("stamp:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.7, 1.5),
+"times": PackedFloat32Array(0, 1.26667, 2.5),
 "transitions": PackedFloat32Array(0.5, -2, 2),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 0.4, 0), Vector3(0, 0, 0)]
@@ -28,7 +28,7 @@ tracks/1/path = NodePath("stamp:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.38, 0.82, 1.2, 1.5),
+"times": PackedFloat32Array(0, 0.566667, 1.26667, 1.83333, 2.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 3.14159, 0), Vector3(0, 6.28319, 0), Vector3(0, 8.37758, 0), Vector3(0, 12.5664, 0)]

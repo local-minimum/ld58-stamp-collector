@@ -36,7 +36,7 @@ func _handle_run_started(start: int) -> void:
 func _handle_player_death() -> void:
     _running = false
 
-func _handle_level_completed(time: int) -> void:
+func _handle_level_completed(_goal: Goal, time: int) -> void:
     _running = false
     current.text = "%.3fs" % (time / 1000.0)
     if _level == null || _level.best_time_msec < 0 || time < _level.best_time_msec:

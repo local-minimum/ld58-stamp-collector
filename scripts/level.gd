@@ -26,7 +26,7 @@ func _handle_player_death() -> void:
     current_time_msec = -1
     __SignalBus.on_update_level_stats.emit(self, true)
 
-func _handle_level_completed(time: int) -> void:
+func _handle_level_completed(_goal: Goal, time: int) -> void:
     current_time_msec = time
     if best_time_msec < 0:
         best_time_msec = current_time_msec

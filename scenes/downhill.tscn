@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://osftwwpqyp15"]
+[gd_scene load_steps=16 format=3 uid="uid://osftwwpqyp15"]
 
 [ext_resource type="Script" uid="uid://7fuanfr1bf0g" path="res://scripts/level.gd" id="1_rrfin"]
 [ext_resource type="PackedScene" uid="uid://c7qdipaiiomto" path="res://scenes/player/player.tscn" id="2_tu4an"]
@@ -11,23 +11,22 @@
 [ext_resource type="Script" uid="uid://ddqoxa0mtlejm" path="res://scripts/kill_zone.gd" id="9_ictv4"]
 [ext_resource type="Script" uid="uid://c16ixpg4aqpej" path="res://scripts/camera_path.gd" id="10_ptwan"]
 [ext_resource type="PackedScene" uid="uid://dc0f4fsg3hrfh" path="res://scenes/other/level_canvas.tscn" id="11_uvbq7"]
+[ext_resource type="PackedScene" uid="uid://bgkntaurh3vs2" path="res://scenes/decorations/fence.tscn" id="11_v1yi1"]
 [ext_resource type="PackedScene" uid="uid://pne0ugvlbqdo" path="res://scenes/decorations/backdrop.tscn" id="12_tu4an"]
 [ext_resource type="PackedScene" uid="uid://inn0btw8todq" path="res://world_environment.tscn" id="13_jy476"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4kmhl"]
-size = Vector3(9, 1, 9)
+size = Vector3(11.9, 1, 11.7)
 
 [node name="Level" type="Node3D"]
 script = ExtResource("1_rrfin")
 level_id = "downhill"
 
-[node name="Player" parent="." instance=ExtResource("2_tu4an")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000673145, 2.09366, -2.0266)
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.933041, -0.247494, -0.261114, 0.359769, 0.641862, 0.677185, 0, -0.725783, 0.687924, 0, 5.25578, 0)
 
 [node name="LevelGeometry" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
 
 [node name="flatbase" parent="LevelGeometry" instance=ExtResource("3_jy476")]
 
@@ -203,28 +202,34 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, -3
 [node name="Narrow2" parent="LevelGeometry" instance=ExtResource("8_fdgnt")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -5, -12)
 
+[node name="Fence" parent="LevelGeometry" instance=ExtResource("11_v1yi1")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.9, 1, -2)
+
+[node name="Player" parent="LevelGeometry" instance=ExtResource("2_tu4an")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000673145, 2.09366, -2.0266)
+
 [node name="Area3D" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1, 0)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2, -1, 0)
 script = ExtResource("9_ictv4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.05, -1, 2.35)
 shape = SubResource("BoxShape3D_4kmhl")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -2, -5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, -2.8, -0.9)
 shape = SubResource("BoxShape3D_4kmhl")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -5, -12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -5, -9.7)
 shape = SubResource("BoxShape3D_4kmhl")
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -4, -7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, -4.6, -7.4)
 shape = SubResource("BoxShape3D_4kmhl")
 
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 1.3)
 shape = SubResource("BoxShape3D_4kmhl")
 
 [node name="CollisionShape3D6" type="CollisionShape3D" parent="Area3D"]
@@ -241,27 +246,30 @@ shape = SubResource("BoxShape3D_4kmhl")
 
 [node name="Camera Track" type="Node3D" parent="." node_paths=PackedStringArray("player", "cam", "checkpoints")]
 script = ExtResource("10_ptwan")
-player = NodePath("../Player")
+player = NodePath("../LevelGeometry/Player")
 cam = NodePath("../Camera3D")
-checkpoints = [NodePath("Checkpoint 1"), NodePath("Checkpoint 2"), NodePath("Checkpoint 3")]
-transition_times = Array[float]([8.0, 7.0])
+checkpoints = [NodePath("Checkpoint 1"), NodePath("Checkpoint 1_5"), NodePath("Checkpoint 2"), NodePath("Checkpoint 3")]
+transition_times = Array[float]([2.0, 8.0, 7.0])
 
 [node name="Checkpoint 1" type="Node3D" parent="Camera Track"]
-transform = Transform3D(1, 0, 2.98023e-08, 2.98023e-08, 1, 1.49012e-08, 2.98023e-08, 0, 1, 7.81498, 3.92812, -2.16863)
+transform = Transform3D(1, 0, 2.98023e-08, 2.98023e-08, 1, 1.49012e-08, 2.98023e-08, 0, 1, 7.81498, 4.42812, 1.83137)
+
+[node name="Checkpoint 1_5" type="Node3D" parent="Camera Track"]
+transform = Transform3D(1, 0, 2.98023e-08, 2.98023e-08, 1, 1.49012e-08, 2.98023e-08, 0, 1, 11.515, 4.42812, 4.23137)
 
 [node name="Checkpoint 2" type="Node3D" parent="Camera Track"]
-transform = Transform3D(1, 0, 2.98023e-08, 2.98023e-08, 1, 1.49012e-08, 2.98023e-08, 0, 1, 9.815, 1.92812, -6.16863)
+transform = Transform3D(1, 0, 2.98023e-08, 2.98023e-08, 1, 1.49012e-08, 2.98023e-08, 0, 1, 13.815, 1.32812, -4.16863)
 
 [node name="Checkpoint 3" type="Node3D" parent="Camera Track"]
-transform = Transform3D(1, 0, 2.98023e-08, 2.98023e-08, 1, 1.49012e-08, 2.98023e-08, 0, 1, 8.815, -2.57188, -13.4686)
+transform = Transform3D(1, 0, 2.98023e-08, 2.98023e-08, 1, 1.49012e-08, 2.98023e-08, 0, 1, 16.815, -0.17188, 3.5314)
 
 [node name="Level Canvas" parent="." instance=ExtResource("11_uvbq7")]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-1.39091e-08, 8.8818e-16, 1, 2.98023e-08, 1, -4.73657e-16, -1, 2.98023e-08, -1.39091e-08, 7.81498, 3.92812, -2.16863)
+transform = Transform3D(-2.32633e-08, -0.34202, 0.939693, 2.32478e-08, 0.939693, 0.34202, -1, 2.98023e-08, -1.39091e-08, 7.81498, 4.42812, 1.83137)
 
 [node name="Backdrop" parent="Camera3D" instance=ExtResource("12_tu4an")]
-transform = Transform3D(-1.39091e-08, 2.98023e-08, -1, 1.49012e-08, 1, 2.23517e-08, 1, -4.73657e-16, 1.58932e-08, 0.0617044, -2.93795, -28.4154)
+transform = Transform3D(-2.32633e-08, 2.32478e-08, -1, -0.34202, 0.939693, 1.26081e-08, 0.939693, 0.34202, 1.15477e-08, -4.4383, -4.22447, -31.7766)
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("13_jy476")]
 

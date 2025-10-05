@@ -82,5 +82,5 @@ func kill() -> void:
     _collected_stamps.clear()
     _sync(0)
 
-func _handle_complete_level(_time: int) -> void:
+func _handle_complete_level(_goal: Goal, _time: int) -> void:
     _level_completed = true

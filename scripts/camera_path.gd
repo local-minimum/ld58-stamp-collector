@@ -6,7 +6,7 @@ extends Node3D
 @export var transition_times: Array[float]
 
 @export var reset_duration: float = 0.5
-@export var cam_stamp_distance: float = 2.5
+@export var cam_stamp_distance: float = 4
 @export var cam_stamp_focus_in_duration: float = 0.5
 @export var cam_stamp_stay_duration: float = 0.5
 
@@ -24,8 +24,8 @@ func _ready() -> void:
     if __SignalBus.on_level_completed.connect(_handle_level_completed) != OK:
         push_error("Failed to connect level completed")
 
-    if __SignalBus.on_collect_stamp.connect(_handle_collect_stamp) != OK:
-        push_error("Failed to connect collect stamp")
+    # if __SignalBus.on_collect_stamp.connect(_handle_collect_stamp) != OK:
+    #    push_error("Failed to connect collect stamp")
 
     if __SignalBus.on_resume_play.connect(_handle_resume_play) != OK:
         push_error("Failed to connect resum play")
@@ -36,22 +36,26 @@ func _ready() -> void:
 var _tween: Tween
 
 func _handle_collect_stamp(stamp: CollectableStamp) -> void:
+    _tween_look(stamp.stamp)
+
+func _tween_look(look_target: Node3D) -> void:
     if _tween != null && _tween.is_running():
         _tween.kill()
 
     _tween = create_tween()
-    var inv_direction: Vector3 = (cam.global_position - stamp.stamp.global_position).normalized()
-    var target: Vector3 = stamp.global_position + inv_direction * cam_stamp_distance
+    var inv_direction: Vector3 = (cam.global_position - look_target.global_position).normalized()
+    var target: Vector3 = look_target.global_position + inv_direction * cam_stamp_distance
 
     _tween.tween_property(cam, "global_position", target, cam_stamp_focus_in_duration)
 
-    var rotator: Callable = QuaternionUtils.create_tween_lookat_method(cam, stamp.stamp)
+    var rotator: Callable = QuaternionUtils.create_tween_lookat_method(cam, look_target)
     _tween.parallel().tween_method(rotator, 0.0, 1.0, cam_stamp_focus_in_duration)
 
     _tween.tween_method(func (_f: float) -> void: pass, 0.0, 1.0, cam_stamp_stay_duration)
 
-func _handle_level_completed(_time: int) -> void:
+func _handle_level_completed(goal: Goal, _time: int) -> void:
     _level_completed = true
+    _tween_look(goal)
 
 func reset_cam_to_start() -> void:
     if _level_completed:

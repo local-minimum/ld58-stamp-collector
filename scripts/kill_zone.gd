@@ -7,7 +7,7 @@ func _ready() -> void:
 
 var _disabled: bool
 
-func _handle_level_complete(_time: int) -> void:
+func _handle_level_complete(_goal: Goal, _time: int) -> void:
     _disabled = true
 
 func _on_body_entered(body:Node3D) -> void:
