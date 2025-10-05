@@ -1,6 +1,5 @@
 extends Node3D
 
-@export var _required_level: String
 @export var _load_level_idx: int
 @export var _lid: Node3D
 @export var _lid_collider: CollisionShape3D
@@ -9,7 +8,8 @@ extends Node3D
 var open: bool = false
 
 func _ready() -> void:
-    open = _required_level.is_empty() || __GlobalState.has_completed(_required_level)
+    var required_leved: String = __LevelsManager.get_level_id(_load_level_idx - 1)
+    open = _load_level_idx < __LevelsManager.level_ids.size() && (required_leved.is_empty() || __GlobalState.has_completed(required_leved))
 
     _lid.visible = !open
     _lid_collider.set_deferred("disabled", open)

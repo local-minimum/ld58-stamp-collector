@@ -25,7 +25,9 @@ func _handle_update_level_stats(level: Level, is_update: bool) -> void:
         _completed_levels.append(level.level_id)
 
 func has_completed(level_id: String) -> bool:
-    return !level_id.is_empty() && _completed_levels.has(level_id)
+    var completed = !level_id.is_empty() && _completed_levels.has(level_id)
+    print_debug("[Global State] Level '%s' is completed %s" % [level_id, completed])
+    return completed
 
 
 func get_deaths(level_id: String) -> int:

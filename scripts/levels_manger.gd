@@ -21,6 +21,11 @@ var level_id: String:
             return level_ids[_scene_idx]
         return ""
 
+func get_level_id(idx: int) -> String:
+    if idx < 0 || idx >= level_ids.size():
+        return ""
+    return level_ids[idx]
+
 @export var scenes: Array[String]
 @export var menu_scene: String = "menu"
 @export var level_ids: Array[String]

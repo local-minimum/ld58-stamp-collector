@@ -185,32 +185,26 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6, -1,
 
 [node name="Holed2" parent="LevelGeometry" instance=ExtResource("9_i6lef")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6, -1, 2)
-_required_level = "tutorial"
 _load_level_idx = 1
 
 [node name="Holed3" parent="LevelGeometry" instance=ExtResource("9_i6lef")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6, -1, 0)
-_required_level = "downhill"
 _load_level_idx = 2
 
 [node name="Holed4" parent="LevelGeometry" instance=ExtResource("9_i6lef")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6, -1, -2)
-_required_level = "xxx"
 _load_level_idx = 3
 
 [node name="Holed5" parent="LevelGeometry" instance=ExtResource("9_i6lef")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6, -1, -4)
-_required_level = "xxx"
 _load_level_idx = 4
 
 [node name="Holed6" parent="LevelGeometry" instance=ExtResource("9_i6lef")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6, -1, -6)
-_required_level = "xxx"
 _load_level_idx = 5
 
 [node name="Holed7" parent="LevelGeometry" instance=ExtResource("9_i6lef")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6, -1, -8)
-_required_level = "xxx"
 _load_level_idx = 6
 
 [node name="Goal" parent="LevelGeometry" instance=ExtResource("9_6cdou")]
