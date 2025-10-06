@@ -1,6 +1,7 @@
 extends Node
 class_name LevelsManager
 
+enum SpecialScene { NONE, MENU, OUTRO, COWARDS_END, ALMOST_TRUE_END, TRUE_END }
 enum Phase { IDLE, LOADING_PACKED_SCENE, SWAPPING_ROOT, SWAPPING_COMPLETE }
 
 var _phase: Phase = Phase.IDLE
@@ -28,6 +29,9 @@ func get_level_id(idx: int) -> String:
 
 @export var scenes: Array[String]
 @export var menu_scene: String = "menu"
+@export var cowards_end: String = "cowards"
+@export var almost_end: String = "true_end"
+@export var true_end: String = "almost_end"
 @export var outro_scene: String = "outro"
 @export var level_ids: Array[String]
 @export var level_names: Array[String]
@@ -53,39 +57,91 @@ func _process(_delta: float) -> void:
 func _handle_new_scene_ready() -> void:
     _phase = Phase.SWAPPING_COMPLETE
 
+var _special: SpecialScene = SpecialScene.MENU
+
 func transition_to_scene(idx: int) -> bool:
     if _phase != Phase.IDLE:
         return false
     _scene_idx = idx
+    _special = SpecialScene.NONE
     return _load_scene()
 
 func transition_to_next_scene() -> bool:
     if _phase != Phase.IDLE:
         return false
 
-    _scene_idx += 1
+    match _special:
+        SpecialScene.NONE:
+            _scene_idx += 1
+        SpecialScene.MENU:
+            _scene_idx = 0
+            _special = SpecialScene.NONE
+        SpecialScene.OUTRO:
+            _special = SpecialScene.ALMOST_TRUE_END
+        SpecialScene.ALMOST_TRUE_END:
+            _special = SpecialScene.TRUE_END
+        SpecialScene.TRUE_END:
+            _special = SpecialScene.MENU
+        SpecialScene.COWARDS_END:
+            _special = SpecialScene.COWARDS_END
+        _:
+            push_warning("Unknown special scene %s, cannot go to next" % _special)
+
     return _load_scene()
 
 func transition_to_previous_scene() -> bool:
     if _phase != Phase.IDLE:
         return false
 
-    _scene_idx = maxi(-1, _scene_idx - 1)
+    match _special:
+        SpecialScene.NONE:
+            _scene_idx = maxi(-1, _scene_idx - 1)
+        SpecialScene.MENU:
+            pass
+        SpecialScene.OUTRO:
+            _scene_idx = scenes.size() - 1
+            _special = SpecialScene.NONE
+        SpecialScene.ALMOST_TRUE_END:
+            _special = SpecialScene.OUTRO
+        SpecialScene.TRUE_END:
+            _special = SpecialScene.ALMOST_TRUE_END
+        SpecialScene.COWARDS_END:
+            _special = SpecialScene.OUTRO
+        _:
+            push_warning("Unknown special scene %s, cannot go to previous" % _special)
+
     return _load_scene()
 
-func transition_to_menu() -> void:
-    _scene_idx = -1
+func transition_to_special(special: SpecialScene) -> void:
+    _special = special
     _load_scene()
 
 func _load_scene() -> bool:
-    if _scene_idx < 0:
-        _scene_idx = -1
-        _loading_resource_path = menu_scene
-    elif _scene_idx >= scenes.size():
-        _scene_idx = -1
-        _loading_resource_path = outro_scene
-    else:
-        _loading_resource_path = scenes[_scene_idx]
+    match _special:
+        SpecialScene.NONE:
+            _scene_idx = maxi(-1, _scene_idx - 1)
+            if _scene_idx >= scenes.size():
+                _loading_resource_path = outro_scene
+                _special = SpecialScene.OUTRO
+            elif _scene_idx < -1:
+                _loading_resource_path = menu_scene
+                _special = SpecialScene.MENU
+            else:
+                _loading_resource_path = scenes[_scene_idx]
+        SpecialScene.MENU:
+            _loading_resource_path = menu_scene
+        SpecialScene.OUTRO:
+            _loading_resource_path = outro_scene
+        SpecialScene.ALMOST_TRUE_END:
+            _special = SpecialScene.OUTRO
+            _loading_resource_path = almost_end
+        SpecialScene.TRUE_END:
+            _loading_resource_path = true_end
+        SpecialScene.COWARDS_END:
+            _loading_resource_path = cowards_end
+        _:
+            push_warning("Unknown special scene %s, going to menu" % _special)
+            _loading_resource_path = menu_scene
 
     __SignalBus.on_scene_transition_initiate.emit()
 

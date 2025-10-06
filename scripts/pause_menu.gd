@@ -25,7 +25,7 @@ func _on_next_level_pressed() -> void:
 
 func _on_menu_pressed() -> void:
     Engine.time_scale = 1
-    __LevelsManager.transition_to_menu()
+    __LevelsManager.transition_to_special(LevelsManager.SpecialScene.MENU)
 
 func _show_menu() -> void:
     _pause_start = Time.get_ticks_msec()

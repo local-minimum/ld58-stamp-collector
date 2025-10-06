@@ -58,7 +58,7 @@ func _on_body_entered(body:Node3D) -> void:
         await get_tree().create_timer(delay_before_load_next + speaker.stream.get_length()).timeout
 
         if go_to_menu_after:
-            __LevelsManager.transition_to_menu()
+            __LevelsManager.transition_to_special(LevelsManager.SpecialScene.MENU)
         else:
             __LevelsManager.transition_to_next_scene()
     else:
