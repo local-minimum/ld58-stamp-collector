@@ -1,6 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://ojrxd2wwlkt"]
+[gd_scene load_steps=17 format=3 uid="uid://ojrxd2wwlkt"]
 
 [ext_resource type="Script" uid="uid://7fuanfr1bf0g" path="res://scripts/level.gd" id="1_i6lef"]
+[ext_resource type="AudioStream" uid="uid://ced45um41x6w1" path="res://audio/poem.mp3" id="2_7jp70"]
 [ext_resource type="PackedScene" uid="uid://c7qdipaiiomto" path="res://scenes/player/player.tscn" id="2_70i5f"]
 [ext_resource type="PackedScene" uid="uid://blja4x0ic71px" path="res://scenes/blocks/flatbase.tscn" id="3_mj5lg"]
 [ext_resource type="PackedScene" uid="uid://3i1kb6v3egr2" path="res://scenes/blocks/pyramid.tscn" id="4_ufwb2"]
@@ -18,9 +19,11 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_4kmhl"]
 size = Vector3(9, 1, 9)
 
-[node name="Menu" type="Node3D"]
+[node name="Menu" type="Node3D" node_paths=PackedStringArray("speaker")]
 script = ExtResource("1_i6lef")
 level_id = "menu"
+speaker = NodePath("AudioStreamPlayer")
+poem = ExtResource("2_7jp70")
 
 [node name="Player" parent="." instance=ExtResource("2_70i5f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000673145, 2.09366, -2.0266)
@@ -316,5 +319,7 @@ horizontal_alignment = 2
 script = ExtResource("14_i42df")
 goal = NodePath("../LevelGeometry/Goal")
 stamps = [NodePath("../LevelGeometry/Stamp"), NodePath("../LevelGeometry/Stamp2"), NodePath("../LevelGeometry/Stamp6"), NodePath("../LevelGeometry/Stamp7"), NodePath("../LevelGeometry/Stamp3"), NodePath("../LevelGeometry/Stamp4"), NodePath("../LevelGeometry/Stamp5")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
 [connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]
