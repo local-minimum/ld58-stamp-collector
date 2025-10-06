@@ -249,7 +249,7 @@ script = ExtResource("10_ptwan")
 player = NodePath("../LevelGeometry/Player")
 cam = NodePath("../Camera3D")
 checkpoints = [NodePath("Checkpoint 1"), NodePath("Checkpoint 1_5"), NodePath("Checkpoint 2"), NodePath("Checkpoint 3")]
-transition_times = Array[float]([2.0, 8.0, 7.0])
+transition_times = Array[float]([2.0, 6.0, 5.0])
 
 [node name="Checkpoint 1" type="Node3D" parent="Camera Track"]
 transform = Transform3D(1, 0, 2.98023e-08, 2.98023e-08, 1, 1.49012e-08, 2.98023e-08, 0, 1, 7.81498, 4.42812, 1.83137)

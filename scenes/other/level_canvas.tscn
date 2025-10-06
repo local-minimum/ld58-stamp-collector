@@ -9,7 +9,7 @@
 
 [node name="Panel" type="Panel" parent="."]
 custom_minimum_size = Vector2(250, 84)
-anchors_preset = -1
+anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -240.0
@@ -142,6 +142,15 @@ size_flags_vertical = 3
 [node name="Menu" type="Button" parent="Pause Menu/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Main Menu"
+
+[node name="Label" type="Label" parent="."]
+custom_minimum_size = Vector2(20, 20)
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 150.0
+offset_bottom = 43.0
+text = "[M] Toggle music
+[P] Pause / Menu"
 
 [connection signal="pressed" from="Pause Menu/MarginContainer/VBoxContainer/Resume" to="Pause Menu" method="_on_resume_pressed"]
 [connection signal="pressed" from="Pause Menu/MarginContainer/VBoxContainer/Previous Level" to="Pause Menu" method="_on_previous_level_pressed"]
