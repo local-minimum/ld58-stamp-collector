@@ -11,11 +11,14 @@ static var _next_sound: int
 @export var pause_between_sounds_msec: int = 400
 
 var _collected: bool
+var _collectable: bool
 
 func _ready() -> void:
     anim.play("Default")
     if __SignalBus.on_player_death.connect(_handle_death) != OK:
         push_error("Failed to connect player death")
+
+    set_deferred("_collectable", true)
 
 
 func _handle_death() -> void:
@@ -23,7 +26,7 @@ func _handle_death() -> void:
     stamp.visible = true
 
 func _on_body_entered(body:Node3D) -> void:
-    if _collected:
+    if Engine.time_scale == 0 || _collected || !_collectable:
         return
 
     if body is BallController:
