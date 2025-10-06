@@ -5,6 +5,8 @@ class_name Goal
 @export var confetti: Array[GPUParticles3D]
 @export var delay_before_load_next: float = 1.0
 @export var go_to_menu_after: bool
+@export var speaker: AudioStreamPlayer
+@export var win_sounds: Array[AudioStream]
 
 var _collected_stamps: Array[CollectableStamp]
 var _completed: bool
@@ -45,9 +47,16 @@ func _on_body_entered(body:Node3D) -> void:
     if _collected_stamps.size() >= required_stamps_collected:
         _completed = true
         __SignalBus.on_level_completed.emit(self, maxi(0, Time.get_ticks_msec() - _run_start))
+
         for conf: GPUParticles3D in confetti:
             conf.restart()
-        await get_tree().create_timer(delay_before_load_next).timeout
+
+        win_sounds.shuffle()
+        speaker.stream = win_sounds[0]
+        speaker.play()
+
+        await get_tree().create_timer(delay_before_load_next + speaker.stream.get_length()).timeout
+
         if go_to_menu_after:
             __LevelsManager.transition_to_menu()
         else:

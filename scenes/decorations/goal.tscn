@@ -1,7 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://cfj7cb6xeqdl5"]
+[gd_scene load_steps=14 format=3 uid="uid://cfj7cb6xeqdl5"]
 
 [ext_resource type="PackedScene" uid="uid://b6g6huxn4l51q" path="res://models/decorations/goal.fbx" id="1_ajgly"]
 [ext_resource type="Script" uid="uid://1mugw8n3pyl1" path="res://scripts/goal.gd" id="2_q2avg"]
+[ext_resource type="AudioStream" uid="uid://1uasflp5l3hx" path="res://audio/goal/philateli.mp3" id="3_6xcm8"]
+[ext_resource type="AudioStream" uid="uid://c4hsu3k72w5mg" path="res://audio/goal/stampcollection.mp3" id="4_dv651"]
+[ext_resource type="AudioStream" uid="uid://478q28smw0a6" path="res://audio/goal/stamps.mp3" id="5_wivbf"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q2avg"]
 size = Vector3(1.37624, 1.01282, 0.154785)
@@ -38,9 +41,11 @@ billboard_mode = 1
 material = SubResource("StandardMaterial3D_6xcm8")
 size = Vector2(0.2, 0.3)
 
-[node name="Goal" node_paths=PackedStringArray("confetti") instance=ExtResource("1_ajgly")]
+[node name="Goal" node_paths=PackedStringArray("confetti", "speaker") instance=ExtResource("1_ajgly")]
 script = ExtResource("2_q2avg")
 confetti = [NodePath("Confetti"), NodePath("Confetti2")]
+speaker = NodePath("AudioStreamPlayer")
+win_sounds = Array[AudioStream]([ExtResource("3_6xcm8"), ExtResource("4_dv651"), ExtResource("5_wivbf")])
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00685847, 0.516663, 0.178236)
@@ -79,5 +84,7 @@ one_shot = true
 explosiveness = 0.3
 process_material = SubResource("ParticleProcessMaterial_2bwmb")
 draw_pass_1 = SubResource("QuadMesh_dv651")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="7"]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

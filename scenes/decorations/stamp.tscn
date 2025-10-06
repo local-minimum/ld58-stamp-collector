@@ -1,8 +1,31 @@
-[gd_scene load_steps=8 format=3 uid="uid://b3rcjl01xw5ly"]
+[gd_scene load_steps=31 format=3 uid="uid://b3rcjl01xw5ly"]
 
 [ext_resource type="Script" uid="uid://bba38vvp4jl2x" path="res://scripts/collectable_stamp.gd" id="1_1guk1"]
 [ext_resource type="PackedScene" uid="uid://c4dja0lc67nly" path="res://models/decorations/stamp.fbx" id="1_xrcc2"]
+[ext_resource type="AudioStream" uid="uid://btxdmxghio130" path="res://audio/stamps/airmail.mp3" id="2_7puqb"]
+[ext_resource type="AudioStream" uid="uid://j32wurgff6d" path="res://audio/stamps/artdeco.mp3" id="3_h1nn7"]
 [ext_resource type="PackedScene" uid="uid://lmldlifgnqq6" path="res://scenes/decorations/heart_effect.tscn" id="3_ilevm"]
+[ext_resource type="AudioStream" uid="uid://5ntvjbptvihj" path="res://audio/stamps/banana.mp3" id="4_k3e0a"]
+[ext_resource type="AudioStream" uid="uid://bceq403x1prr4" path="res://audio/stamps/bicycle.mp3" id="5_14r0j"]
+[ext_resource type="AudioStream" uid="uid://20o3n4aronb0" path="res://audio/stamps/bird.mp3" id="6_lc0d3"]
+[ext_resource type="AudioStream" uid="uid://d2vwh6awvkllg" path="res://audio/stamps/blackbull.mp3" id="7_h56mu"]
+[ext_resource type="AudioStream" uid="uid://blhd23o7tnjgl" path="res://audio/stamps/cat.mp3" id="8_2qlej"]
+[ext_resource type="AudioStream" uid="uid://bvky0f6p4v31h" path="res://audio/stamps/chemistry.mp3" id="9_ytei5"]
+[ext_resource type="AudioStream" uid="uid://ct2f4a2gw62mf" path="res://audio/stamps/cinderella.mp3" id="10_wrikd"]
+[ext_resource type="AudioStream" uid="uid://dt2m0dkd3wtjr" path="res://audio/stamps/coffee.mp3" id="11_tyevo"]
+[ext_resource type="AudioStream" uid="uid://c3vf55ukirhtm" path="res://audio/stamps/coilstamp.mp3" id="12_q0l0g"]
+[ext_resource type="AudioStream" uid="uid://dswrxxi1rwmgi" path="res://audio/stamps/comemorative.mp3" id="13_0081p"]
+[ext_resource type="AudioStream" uid="uid://da26apfls4nlk" path="res://audio/stamps/dinosaur.mp3" id="14_g7ham"]
+[ext_resource type="AudioStream" uid="uid://cc1f5bmigu7cw" path="res://audio/stamps/express.mp3" id="15_tfd14"]
+[ext_resource type="AudioStream" uid="uid://dju1fgok3rct5" path="res://audio/stamps/firstday.mp3" id="16_f3esu"]
+[ext_resource type="AudioStream" uid="uid://b1birqsgb4i5u" path="res://audio/stamps/forgery.mp3" id="17_pmgrt"]
+[ext_resource type="AudioStream" uid="uid://lj3ddw2btq14" path="res://audio/stamps/military.mp3" id="18_r8wo0"]
+[ext_resource type="AudioStream" uid="uid://3ytdmlkqy2ab" path="res://audio/stamps/miniature.mp3" id="19_bqcvu"]
+[ext_resource type="AudioStream" uid="uid://veaup5em2v07" path="res://audio/stamps/overprint.mp3" id="20_6b78f"]
+[ext_resource type="AudioStream" uid="uid://didiaq4nfystw" path="res://audio/stamps/scented.mp3" id="21_642o6"]
+[ext_resource type="AudioStream" uid="uid://c4k1no2s4pn7s" path="res://audio/stamps/sovietspace.mp3" id="22_g17l8"]
+[ext_resource type="AudioStream" uid="uid://cc17p7pg8nqa1" path="res://audio/stamps/test.mp3" id="23_f23kn"]
+[ext_resource type="AudioStream" uid="uid://ba541dq7s3hy0" path="res://audio/stamps/usspace.mp3" id="24_2xjqk"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_1guk1"]
 
@@ -67,11 +90,14 @@ _data = {
 &"RESET": SubResource("Animation_1guk1")
 }
 
-[node name="Stamp" type="Area3D" node_paths=PackedStringArray("anim", "stamp")]
+[node name="Stamp" type="Area3D" node_paths=PackedStringArray("anim", "stamp", "speaker")]
 script = ExtResource("1_1guk1")
 anim = NodePath("AnimationPlayer")
 stamp = NodePath("stamp")
 delayed_removal = 0.25
+speaker = NodePath("AudioStreamPlayer")
+clips = Array[AudioStream]([ExtResource("2_7puqb"), ExtResource("3_h1nn7"), ExtResource("4_k3e0a"), ExtResource("5_14r0j"), ExtResource("6_lc0d3"), ExtResource("7_h56mu"), ExtResource("8_2qlej"), ExtResource("9_ytei5"), ExtResource("10_wrikd"), ExtResource("11_tyevo"), ExtResource("12_q0l0g"), ExtResource("13_0081p"), ExtResource("14_g7ham"), ExtResource("15_tfd14"), ExtResource("16_f3esu"), ExtResource("17_pmgrt"), ExtResource("18_r8wo0"), ExtResource("19_bqcvu"), ExtResource("20_6b78f"), ExtResource("21_642o6"), ExtResource("22_g17l8"), ExtResource("23_f23kn"), ExtResource("24_2xjqk")])
+pause_between_sounds_msec = 600
 
 [node name="stamp" parent="." instance=ExtResource("1_xrcc2")]
 
@@ -87,5 +113,7 @@ next/Default = &"Default"
 [node name="heart" parent="." node_paths=PackedStringArray("_stamp") instance=ExtResource("3_ilevm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.322218, 0)
 _stamp = NodePath("..")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
