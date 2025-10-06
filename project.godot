@@ -10,7 +10,8 @@ config_version=5
 
 [application]
 
-config/name="LD58 The Stamp Collector"
+config/name="Stampede Philarun"
+config/version="1.0.0"
 run/main_scene="uid://ojrxd2wwlkt"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"

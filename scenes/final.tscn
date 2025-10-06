@@ -219,6 +219,7 @@ transform = Transform3D(1, 0, 2.98023e-08, 2.98023e-08, 1, 1.49012e-08, 2.98023e
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-0.0686159, -0.13405, 0.988596, 0.0515435, 0.989132, 0.137701, -0.996311, 0.0604042, -0.0609607, 7.81498, 2.92812, -2.16863)
+current = true
 
 [node name="Backdrop" parent="Camera3D" instance=ExtResource("11_tm14p")]
 transform = Transform3D(-0.0686159, 0.0515435, -0.996311, -0.13405, 0.989132, 0.0604042, 0.988596, 0.137701, -0.0609607, -0.883317, 0.0249541, -21.113)

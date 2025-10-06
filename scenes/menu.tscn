@@ -265,8 +265,14 @@ transform = Transform3D(1, 0, 2.98023e-08, 2.98023e-08, 1, 1.49012e-08, 2.98023e
 [node name="Level Info Canvas" type="CanvasLayer" parent="."]
 
 [node name="Level Info" type="PanelContainer" parent="Level Info Canvas" node_paths=PackedStringArray("container", "level_name", "level_deaths", "level_record")]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
 offset_left = 20.0
-offset_top = 20.0
+offset_top = -105.0
+offset_right = 173.0
+offset_bottom = -20.0
+grow_vertical = 0
 script = ExtResource("10_70i5f")
 container = NodePath(".")
 level_name = NodePath("MarginContainer/VBoxContainer/Level Name")

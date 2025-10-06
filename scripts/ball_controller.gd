@@ -6,6 +6,7 @@ class_name BallController
 @export var stamp_colliders: Array[CollisionShape3D]
 @export_range(0,1) var rotational_friction: float = 0.15
 @export_range(0,1) var goal_friction: float = 0.05
+@export var kill_height: float = - 20.0
 
 var start_positon: Vector3
 var _acceleration: Vector3
@@ -77,6 +78,14 @@ func _physics_process(delta: float) -> void:
             angular_velocity.y *= 1 - rotational_friction
         if acc.z == 0:
             angular_velocity.z *= 1 - rotational_friction
+
+func _process(_delta: float) -> void:
+    if _level_completed:
+        return
+
+    if global_position.y < kill_height:
+        print_debug("[Ball] Too far down")
+        __SignalBus.on_player_death.emit()
 
 
 func kill() -> void:

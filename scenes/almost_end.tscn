@@ -106,6 +106,15 @@ transform = Transform3D(-4.37114e-08, 0, 1, -0.0871557, 0.996195, -3.8097e-09, -
 [node name="Fence" parent="LevelGeometry" instance=ExtResource("7_ll8ug")]
 transform = Transform3D(-4.37114e-08, 0, 1, -0.0871557, 0.996195, -3.8097e-09, -0.996195, -0.0871557, -4.35451e-08, 8, -1, 1)
 
+[node name="Holed" parent="LevelGeometry" instance=ExtResource("14_q68vx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.1, -4.5, -8)
+
+[node name="Fence2" parent="LevelGeometry" instance=ExtResource("7_ll8ug")]
+transform = Transform3D(0.939693, 0, -0.34202, 0, 1, 0, 0.34202, 0, 0.939693, 4.8, -1, 0.7)
+
+[node name="Holed2" parent="LevelGeometry" instance=ExtResource("14_q68vx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, -3.1, -1)
+
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1, 0)
 script = ExtResource("8_kslph")
@@ -165,20 +174,12 @@ transform = Transform3D(1, 0, 2.98023e-08, 2.98023e-08, 1, 1.49012e-08, 2.98023e
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-0.0686159, -0.13405, 0.988596, 0.0515435, 0.989132, 0.1377, -0.996311, 0.0604041, -0.0609608, 5.81498, 2.92812, -2.16863)
+current = true
 
 [node name="Backdrop" parent="Camera3D" instance=ExtResource("11_006h4")]
 transform = Transform3D(-0.0686159, 0.0515435, -0.996311, -0.13405, 0.989132, 0.0604042, 0.988596, 0.137701, -0.0609607, -0.883317, 0.0249541, -21.113)
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("12_5jrqt")]
-
-[node name="Holed" parent="." instance=ExtResource("14_q68vx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.1, -4.5, -8)
-
-[node name="Fence" parent="." instance=ExtResource("7_ll8ug")]
-transform = Transform3D(0.939693, 0, -0.34202, 0, 1, 0, 0.34202, 0, 0.939693, 4.8, -1, 0.7)
-
-[node name="Holed2" parent="." instance=ExtResource("14_q68vx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, -3.1, -1)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." node_paths=PackedStringArray("controller")]
 layer = 128

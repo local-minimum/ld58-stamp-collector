@@ -10,7 +10,7 @@
 size = Vector3(1.37624, 1.01282, 0.154785)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ajgly"]
-height = 1.25928
+height = 1.40826
 radius = 0.0537109
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hndij"]
@@ -54,15 +54,15 @@ shape = SubResource("BoxShape3D_q2avg")
 [node name="StaticBody3D" type="StaticBody3D" parent="." index="4"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.749797, 0.616943, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.749797, 0.695922, 0)
 shape = SubResource("CylinderShape3D_ajgly")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.745254, 0.616943, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.745254, 0.694549, 0)
 shape = SubResource("CylinderShape3D_ajgly")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0144958, 1.12939, -0.00302124)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0144958, 1.25651, -0.00302124)
 shape = SubResource("BoxShape3D_hndij")
 
 [node name="Confetti" type="GPUParticles3D" parent="." index="5"]
