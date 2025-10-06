@@ -30,8 +30,8 @@ func get_level_id(idx: int) -> String:
 @export var scenes: Array[String]
 @export var menu_scene: String = "menu"
 @export var cowards_end: String = "cowards"
-@export var almost_end: String = "true_end"
-@export var true_end: String = "almost_end"
+@export var almost_end: String = "almost_end"
+@export var true_end: String = "true_end"
 @export var outro_scene: String = "outro"
 @export var level_ids: Array[String]
 @export var level_names: Array[String]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=22 format=3 uid="uid://dbvb4jrl8gbnl"]
+[gd_scene load_steps=26 format=3 uid="uid://dbvb4jrl8gbnl"]
 
 [ext_resource type="Script" uid="uid://7fuanfr1bf0g" path="res://scripts/level.gd" id="1_p8q65"]
 [ext_resource type="PackedScene" uid="uid://c7qdipaiiomto" path="res://scenes/player/player.tscn" id="2_eq15a"]
+[ext_resource type="AudioStream" uid="uid://sfqu6fb37k4p" path="res://audio/poem2.mp3" id="2_fxxuk"]
 [ext_resource type="PackedScene" uid="uid://blja4x0ic71px" path="res://scenes/blocks/flatbase.tscn" id="3_lsp6n"]
 [ext_resource type="PackedScene" uid="uid://3i1kb6v3egr2" path="res://scenes/blocks/pyramid.tscn" id="4_ssjpb"]
 [ext_resource type="PackedScene" uid="uid://b3rcjl01xw5ly" path="res://scenes/decorations/stamp.tscn" id="5_h6h3x"]
@@ -17,6 +18,9 @@
 [ext_resource type="PackedScene" uid="uid://inn0btw8todq" path="res://world_environment.tscn" id="12_jeox6"]
 [ext_resource type="Script" uid="uid://byucnnihulxru" path="res://scripts/cowards_end_button.gd" id="16_t6w51"]
 [ext_resource type="Texture2D" uid="uid://d2xjborl3heg5" path="res://sprites/invisible.png" id="17_fxxuk"]
+[ext_resource type="StyleBox" uid="uid://djs2tk8u53yqr" path="res://styles/button_hover.tres" id="19_atr8u"]
+[ext_resource type="StyleBox" uid="uid://cmci8v3qec810" path="res://styles/button_pressed.tres" id="20_25oel"]
+[ext_resource type="StyleBox" uid="uid://dy155bjp5tn8y" path="res://styles/button_normal.tres" id="21_jeox6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4kmhl"]
 size = Vector3(9, 1, 9)
@@ -30,9 +34,12 @@ viewport_path = NodePath("End Message 2/SubViewport")
 [sub_resource type="ViewportTexture" id="ViewportTexture_t6w51"]
 viewport_path = NodePath("End Message 3/SubViewport")
 
-[node name="Level" type="Node3D"]
+[node name="Level" type="Node3D" node_paths=PackedStringArray("speaker")]
 script = ExtResource("1_p8q65")
 level_id = "outro"
+speaker = NodePath("AudioStreamPlayer")
+poem = ExtResource("2_fxxuk")
+poetry_on_ready = true
 
 [node name="Player" parent="." instance=ExtResource("2_eq15a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000673145, 2.09366, -2.0266)
@@ -153,7 +160,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, -9.9, -11.2)
 [node name="Goal" parent="LevelGeometry" instance=ExtResource("6_t6w51")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 18.6, -8.9, -11.2)
 required_stamps_collected = 5
-go_to_menu_after = true
 
 [node name="Fence" parent="LevelGeometry" instance=ExtResource("7_fxxuk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -16)
@@ -351,8 +357,15 @@ offset_left = 220.0
 offset_top = 233.0
 offset_right = 339.0
 offset_bottom = 287.0
+theme_override_styles/focus = ExtResource("19_atr8u")
+theme_override_styles/hover_pressed = ExtResource("20_25oel")
+theme_override_styles/hover = ExtResource("19_atr8u")
+theme_override_styles/pressed = ExtResource("20_25oel")
+theme_override_styles/normal = ExtResource("21_jeox6")
 text = "Be reasonable
 Call it quits"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
 [connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]
 [connection signal="mouse_entered" from="CowardsEnding/TextureRect" to="CowardsEnding" method="_on_texture_rect_mouse_entered"]

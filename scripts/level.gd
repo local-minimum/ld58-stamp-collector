@@ -4,6 +4,7 @@ class_name Level
 @export var level_id: String
 @export var speaker: AudioStreamPlayer
 @export var poem: AudioStream
+@export var poetry_on_ready: bool
 
 var death_counter: int
 
@@ -27,6 +28,9 @@ func _ready() -> void:
     death_counter = __GlobalState.get_deaths(level_id)
     current_time_msec = -1
     __SignalBus.on_update_level_stats.emit(self, false)
+
+    if poetry_on_ready:
+        _handle_run_start(0)
 
 func _handle_run_start(_start: int) -> void:
     if _played_poem || speaker == null || poem == null:

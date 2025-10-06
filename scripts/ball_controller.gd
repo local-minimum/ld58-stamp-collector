@@ -11,6 +11,7 @@ var start_positon: Vector3
 var _acceleration: Vector3
 var _started: bool
 var _level_completed: bool
+var cinematic: bool
 
 func _ready() -> void:
     start_positon = global_position
@@ -42,7 +43,7 @@ func _handle_collect_stamp(stamp: CollectableStamp) -> void:
 var x: float
 var z: float
 func _input(event: InputEvent) -> void:
-    if Engine.time_scale == 0:
+    if cinematic || Engine.time_scale == 0:
         return
 
     if event.is_action_pressed("roll_west") || event.is_action_released("roll_east"):
@@ -57,7 +58,7 @@ func _input(event: InputEvent) -> void:
     _acceleration = Vector3(x, 0, z)
 
 func _physics_process(delta: float) -> void:
-    if Engine.time_scale == 0:
+    if cinematic || Engine.time_scale == 0:
         return
 
     if !_started && _acceleration != Vector3.ZERO:
