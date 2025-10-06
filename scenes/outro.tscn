@@ -316,6 +316,7 @@ texture = SubResource("ViewportTexture_t6w51")
 script = ExtResource("16_t6w51")
 button = NodePath("CowardsEnd")
 triggers = [NodePath("TextureRect"), NodePath("TextureRect2"), NodePath("TextureRect3"), NodePath("TextureRect4")]
+allow_after_avoids = 15
 
 [node name="TextureRect" type="TextureRect" parent="CowardsEnding"]
 offset_left = 281.0
