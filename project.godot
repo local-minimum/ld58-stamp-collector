@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="LD58 The Stamp Collector"
-run/main_scene="uid://dbvb4jrl8gbnl"
+run/main_scene="uid://ojrxd2wwlkt"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
