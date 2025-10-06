@@ -73,11 +73,13 @@ func transition_to_next_scene() -> bool:
     match _special:
         SpecialScene.NONE:
             _scene_idx += 1
+            print_debug("[Levels] Going next to level %s" % _scene_idx)
         SpecialScene.MENU:
             _scene_idx = 0
             _special = SpecialScene.NONE
         SpecialScene.OUTRO:
             _special = SpecialScene.ALMOST_TRUE_END
+            print_debug("[Levels] Going next to outro")
         SpecialScene.ALMOST_TRUE_END:
             _special = SpecialScene.TRUE_END
         SpecialScene.TRUE_END:
@@ -119,7 +121,6 @@ func transition_to_special(special: SpecialScene) -> void:
 func _load_scene() -> bool:
     match _special:
         SpecialScene.NONE:
-            _scene_idx = maxi(-1, _scene_idx - 1)
             if _scene_idx >= scenes.size():
                 _loading_resource_path = outro_scene
                 _special = SpecialScene.OUTRO
