@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Stampede Philarun"
 config/version="1.0.0"
-run/main_scene="uid://ojrxd2wwlkt"
+run/main_scene="uid://dd1b15x3jtimp"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 

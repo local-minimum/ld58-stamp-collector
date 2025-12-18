@@ -85,7 +85,7 @@ func transition_to_next_scene() -> bool:
         SpecialScene.TRUE_END:
             _special = SpecialScene.MENU
         SpecialScene.COWARDS_END:
-            _special = SpecialScene.COWARDS_END
+            _special = SpecialScene.MENU
         _:
             push_warning("Unknown special scene %s, cannot go to next" % _special)
 
